@@ -1,0 +1,168 @@
+<?php
+session_start();
+
+class DB {
+    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db07_2";
+    protected $pdo;
+    protected $table;
+
+    function __construct($table) {
+        $this->table = $table;
+        $this->pdo = new PDO($this->dsn, 'root', '');
+    }
+
+    function all(...$arg) {
+        $sql = "SELECT * FROM $this->table";
+
+        if (isset($arg[0])) {
+            if (is_array($arg[0])) {
+                $where = $this->array2sql($arg[0]);
+                $sql .= " WHERE " . join(" AND", $where);
+            } else {
+                $sql .= $arg[0];
+            }
+        }
+
+        if (isset($arg[1])) {
+            $sql .= $arg[1];
+        }
+
+
+        // echo $sql;
+
+        return $this->pdo->query($sql)->fetchALL(PDO::FETCH_ASSOC);
+    }
+
+    function find($id) {
+        $sql = "SELECT * FROM $this->table";
+
+        if (is_array($id)) {
+            $where = $this->array2sql($id);
+            $sql .= " WHERE " . join(" AND ", $where);
+        } else {
+            $sql .= " WHERE `id` = '{$id}' ";
+        }
+
+        // echo $sql;
+
+
+        return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function save($array) {
+        $sql = '';
+        if (isset($array['id'])) {
+            // update
+            $set = $this->array2sql($array);
+            $sql = "UPDATE $this->table SET " . join(",", $set) . " WHERE `id`='{$array['id']}'";
+        } else {
+            // insert
+            $cols = array_keys($array);
+            $sql = "INSERT INTO $this->table (`" . join("`,`", $cols) . "`) VALUES('" . join("','", $array) . "')";
+        }
+
+        // echo $sql;
+        return $this->pdo->exec($sql);
+    }
+
+    function del($id) {
+        $sql = "DELETE FROM $this->table";
+
+        if (is_array($id[0])) {
+            $where = $this->array2sql($id[0]);
+            $sql .= " WHERE " . join(" AND ", $where);
+        } else {
+            $sql .= " WHERE `id` = '{$id}'";
+        }
+
+        return $this->pdo->exec($sql);
+    }
+
+    function count(...$arg) {
+        $sql = "SELECT count(*) FROM $this->table";
+        if (isset($arg[0])) {
+            if (is_array($arg[0])) {
+                $where = $this->array2sql($arg[0]);
+                $sql .= " WHERE " . join(" AND", $where);
+            } else {
+                $sql .= $arg[0];
+            }
+        }
+
+        if (isset($arg[1])) {
+            $sql .= $arg[1];
+        }
+
+
+        // echo $sql;ql='';
+
+        return $this->pdo->query($sql)->fetchColumn();
+    }
+
+    function sum($col, ...$arg) {
+        $sql = "SELECT sum(`$col`) FROM $this->table";
+        
+            if (isset($arg[0])) {
+                if (is_array($arg[0])) {
+                    $where = $this->array2sql($arg[0]);
+                    $sql .= " WHERE " . join(" AND ", $where);
+                } else {
+                    $sql .= $arg[0];
+                }
+            }
+
+            if (isset($arg[1])) {
+                $sql .= $arg[1];
+            }
+        
+
+        return $this->pdo->query($sql)->fetchColumn();
+    }
+
+    private function array2sql($array) {
+        $tmp = [];
+        foreach ($array as $key => $value) {
+            $tmp[] = "`$key`='$value'";
+        }
+        return $tmp;
+    }
+}
+
+function dd($array){
+    echo "<pre>";
+    print_r($array);
+    echo "</pre>";
+}
+
+function to($url) {
+    header("location:" . $url);
+}
+
+function q($sql) {
+    $dsn = "mysql:host=localhost;charset=utf8;dbname=db07_2";
+    $pdo = new PDO($dsn, 'root', '');
+    return $pdo->query($sql)->fetchALL(PDO::FETCH_ASSOC);
+}
+
+$Total=new DB('total');
+$Mem=new DB('member');
+
+// $Total->save(['date'=>date("Y-m-d"),'total'=>0]);
+// $rows=$Total->all();
+// dd($rows);
+// $row=$Total->find(1);
+// dd($row);
+// $Total->save(['id'=>1,'date'=>'2026-01-11','total'=>100]);
+// echo $Total->sum('total');
+// $Total->del(1);
+
+if(!isset($_SESSION['total'])){
+    $today=$Total->find(['date'=>("Y-m-d")]);
+    if(empty($today)){
+        $Total->save(['date'=>date("Y-m-d"),'total'=>1]);
+    }else{
+        $today['total']=$today['total']+1;
+        $Total->save($today);
+    }
+    $_SESSION['total']=1;
+}
