@@ -64,6 +64,24 @@ class DB
         }
     }
 
+    function count(...$arg){
+        $sql="select count(*) from `$this->table` ";
+
+        if(isset($arg[0])){
+            if(is_array($arg[0])){
+                $tmp=$this->arrayToSql($arg[0]);
+                $sql .= " where " . implode(" && ",$tmp);
+            }else{
+                $sql .=$arg[0];
+            }
+        }
+
+        if(isset($arg[1])){
+            $sql .=$arg[1];
+        }
+        return $this->pdo->query($sql)->fetchColumn();
+    }
+
     function update($array)
     {
         $sql = "UPDATE $this->table ";
@@ -82,13 +100,16 @@ class DB
         return $this->pdo->exec($sql);
     }
 
-    function delete($id)
+    function del($id)
     {
         $sql = "DELETE from `$this->table` ";
         if (is_array($id)) {
             $tmp = $this->arrayToSql($id);
+            $sql .= " where " . implode(" && ", $tmp);
+        } else {
             $sql .= " where `id`='$id' ";
         }
+        return $this->pdo->exec($sql);
     }
 
     private function arrayToSql($array)
@@ -103,8 +124,8 @@ class DB
 
 function q($sql)
 {
-    $dsn = "mysql:host=localhost,dbname=db01;charset=utf8";
-    $pdo = new PDO($dsn . 'root', '');
+    $dsn = "mysql:host=localhost;dbname=db01;charset=utf8";
+    $pdo = new PDO($dsn, 'root', '');
     return $pdo->query($sql)->fetchALL(PDO::FETCH_ASSOC);
 }
 
@@ -113,4 +134,4 @@ function to($url)
     header("location:" . $url);
 }
 
-$student = new DB('students');
+$Title = new DB('title');
