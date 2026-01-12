@@ -146,6 +146,8 @@ function q($sql) {
 
 $Total=new DB('total');
 $Mem=new DB('member');
+$Post=new DB('post');
+$Que=new DB('que');
 
 // $Total->save(['date'=>date("Y-m-d"),'total'=>0]);
 // $rows=$Total->all();
