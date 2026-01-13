@@ -28,7 +28,7 @@
                             <input type="checkbox" name="del[]" id="<?= $row['id']; ?>">
                         </td>
                         <td>
-                            <input type="button" value="更新圖片">
+                            <input type="button" value="更新圖片" onclick="op('#cover','#cvr','./modal/update_<?= $do; ?>.php?id=<?= $row['id']; ?>')">
                         </td>
                     </tr>
                 <?php
