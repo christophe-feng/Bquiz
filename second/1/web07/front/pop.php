@@ -18,9 +18,33 @@
         foreach ($posts as $post):
         ?>
             <tr>
-                <td><?= $post['title']; ?></td>
-                <td><?= mb_substr($post['text'], 0, 25); ?>...</td>
-                <td></td>
+                <td class="title"><?= $post['title']; ?></td>
+                <td class="post">
+                    <span class="short">
+                        <?= mb_substr($post['text'], 0, 25); ?>...
+                    </span>
+                    <span class="full" style="display:none">
+                        <?php
+                        echo "<h3 style='color:skyblue'>" . $Post->type[$post['type']] . "</h3>";
+                        echo nl2br($post['text']);
+                        ?>
+                    </span>
+                </td>
+                <td>
+                    <?php
+                    if (isset($_SESSION['login'])) {
+                        $post_id = $post['id'];
+                        $member_id = $Mem->find(['acc' => $_SESSION['login']])['id'];
+                        echo "<span class='num'>" . $Log->count(['post_id' => $post['id']]) . "</span>";
+                        echo "個人說<div class='good'></div>-";
+                        if ($Log->count(['post_id' => $post_id, 'member_id' => $member_id]) > 0) {
+                            echo "<a href='#' class='great' data-id='{$post['id']}'>收回讚</a>";
+                        } else {
+                            echo "<a href='#' class='great' data-id='{$post['id']}'>讚</a>";
+                        }
+                    }
+                    ?>
+                </td>
             </tr>
         <?php
         endforeach;
@@ -48,3 +72,35 @@
     </div>
 
 </fieldset>
+
+<script>
+    $(".title").hover(
+        function() {
+            $("#alert").html($(this).next().children('.full').html()).show()
+        },
+        function() {
+            $("#alert").hide();
+        }
+    )
+
+    $(".great").on("click", function() {
+        let id = $(this).data('id')
+        let str = $(this).text();
+        let num = 0;
+        $.post("./api/good.php", {
+            id
+        }, () => {
+            switch (str) {
+                case "讚":
+                    $(this).text("收回讚")
+                    num = $(this).siblings('.num').text() * 1 + 1
+                    break;
+                case "收回讚":
+                    $(this).text("讚")
+                    num = $(this).siblings('.num').text() * 1 - 1
+                    break;
+            }
+            $(this).siblings('.num').text(num);
+        })
+    })
+</script>
