@@ -19,9 +19,28 @@
         foreach ($posts as $post):
         ?>
             <tr>
-                <td><?= $post['title']; ?></td>
-                <td><?= mb_substr($post['text'], 0, 25); ?>...</td>
-                <td></td>
+                <td class="title"><?= $post['title']; ?></td>
+                <td class="post">
+                    <span class="short">
+                        <?= mb_substr($post['text'], 0, 25); ?>...
+                    </span>
+                    <span class="full" style="display:none">
+                        <?= nl2br($post['text']); ?>...
+                    </span>
+                </td>
+                <td>
+                    <?php
+                    if (isset($_SESSION['login'])) {
+                        $post_id = $post['id'];
+                        $member_id = $Mem->find(['acc' => $_SESSION['login']])['id'];
+                        if ($Log->count(['post_id' => $post_id, 'member_id' => $member_id]) > 0) {
+                            echo "<a href='#' class='great' data-id='{$post['id']}'>收回讚</a>";
+                        } else {
+                            echo "<a href='#' class='great' data-id='{$post['id']}'>讚</a>";
+                        }
+                    }
+                    ?>
+                </td>
             </tr>
         <?php
         endforeach;
@@ -50,3 +69,26 @@
 
 
 </fieldset>
+
+<script>
+    $(".title").on("click", function() {
+        $(this).next().children('.short,.full').toggle();
+    })
+
+    $(".great").on("click", function() {
+        let id = $(this).data('id')
+        let str = $(this).text();
+        $.post("./api/good.php", {
+            id
+        }, () => {
+            switch (str) {
+                case "讚":
+                    $(this).text("收回讚")
+                    break;
+                case "收回讚":
+                    $(this).text("讚")
+                    break;
+            }
+        })
+    })
+</script>

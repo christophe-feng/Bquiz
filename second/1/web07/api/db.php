@@ -1,17 +1,27 @@
 <?php
 session_start();
 
-class DB {
+class DB
+{
     protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db07_2";
     protected $pdo;
     protected $table;
+    public $type = [
+        1 => "健康新知",
+        2 => "菸害防制",
+        3 => "癌症防治",
+        4 => "慢性病防治"
+    ];
 
-    function __construct($table) {
+
+    function __construct($table)
+    {
         $this->table = $table;
         $this->pdo = new PDO($this->dsn, 'root', '');
     }
 
-    function all(...$arg) {
+    function all(...$arg)
+    {
         $sql = "SELECT * FROM $this->table";
 
         if (isset($arg[0])) {
@@ -33,7 +43,8 @@ class DB {
         return $this->pdo->query($sql)->fetchALL(PDO::FETCH_ASSOC);
     }
 
-    function find($id) {
+    function find($id)
+    {
         $sql = "SELECT * FROM $this->table";
 
         if (is_array($id)) {
@@ -49,7 +60,8 @@ class DB {
         return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     }
 
-    function save($array) {
+    function save($array)
+    {
         $sql = '';
         if (isset($array['id'])) {
             // update
@@ -65,7 +77,8 @@ class DB {
         return $this->pdo->exec($sql);
     }
 
-    function del($id) {
+    function del($id)
+    {
         $sql = "DELETE FROM $this->table";
 
         if (is_array($id[0])) {
@@ -78,7 +91,8 @@ class DB {
         return $this->pdo->exec($sql);
     }
 
-    function count(...$arg) {
+    function count(...$arg)
+    {
         $sql = "SELECT count(*) FROM $this->table";
         if (isset($arg[0])) {
             if (is_array($arg[0])) {
@@ -99,27 +113,29 @@ class DB {
         return $this->pdo->query($sql)->fetchColumn();
     }
 
-    function sum($col, ...$arg) {
+    function sum($col, ...$arg)
+    {
         $sql = "SELECT sum(`$col`) FROM $this->table";
-        
-            if (isset($arg[0])) {
-                if (is_array($arg[0])) {
-                    $where = $this->array2sql($arg[0]);
-                    $sql .= " WHERE " . join(" AND ", $where);
-                } else {
-                    $sql .= $arg[0];
-                }
-            }
 
-            if (isset($arg[1])) {
-                $sql .= $arg[1];
+        if (isset($arg[0])) {
+            if (is_array($arg[0])) {
+                $where = $this->array2sql($arg[0]);
+                $sql .= " WHERE " . join(" AND ", $where);
+            } else {
+                $sql .= $arg[0];
             }
-        
+        }
+
+        if (isset($arg[1])) {
+            $sql .= $arg[1];
+        }
+
 
         return $this->pdo->query($sql)->fetchColumn();
     }
 
-    private function array2sql($array) {
+    private function array2sql($array)
+    {
         $tmp = [];
         foreach ($array as $key => $value) {
             $tmp[] = "`$key`='$value'";
@@ -128,26 +144,30 @@ class DB {
     }
 }
 
-function dd($array){
+function dd($array)
+{
     echo "<pre>";
     print_r($array);
     echo "</pre>";
 }
 
-function to($url) {
+function to($url)
+{
     header("location:" . $url);
 }
 
-function q($sql) {
+function q($sql)
+{
     $dsn = "mysql:host=localhost;charset=utf8;dbname=db07_2";
     $pdo = new PDO($dsn, 'root', '');
     return $pdo->query($sql)->fetchALL(PDO::FETCH_ASSOC);
 }
 
-$Total=new DB('total');
-$Mem=new DB('member');
-$Post=new DB('post');
-$Que=new DB('que');
+$Total = new DB('total');
+$Mem = new DB('member');
+$Post = new DB('post');
+$Que = new DB('que');
+$Log = new DB('log');
 
 // $Total->save(['date'=>date("Y-m-d"),'total'=>0]);
 // $rows=$Total->all();
@@ -158,13 +178,13 @@ $Que=new DB('que');
 // echo $Total->sum('total');
 // $Total->del(1);
 
-if(!isset($_SESSION['total'])){
-    $today=$Total->find(['date'=>("Y-m-d")]);
-    if(empty($today)){
-        $Total->save(['date'=>date("Y-m-d"),'total'=>1]);
-    }else{
-        $today['total']=$today['total']+1;
+if (!isset($_SESSION['total'])) {
+    $today = $Total->find(['date' => ("Y-m-d")]);
+    if (empty($today)) {
+        $Total->save(['date' => date("Y-m-d"), 'total' => 1]);
+    } else {
+        $today['total'] = $today['total'] + 1;
         $Total->save($today);
     }
-    $_SESSION['total']=1;
+    $_SESSION['total'] = 1;
 }
