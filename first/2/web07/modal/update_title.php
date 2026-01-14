@@ -1,3 +1,4 @@
+<!-- 更新網站標題管理的圖片 -->
 <div class="cent">更新圖片</div>
 <hr>
 <form action="./api/update_title.php" method="post" enctype="multipart/form-data">
