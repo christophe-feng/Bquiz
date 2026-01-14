@@ -1,3 +1,4 @@
+<!-- 上傳更新網站標題管理的圖片 -->
 <?php
 include_once "db.php";
 
