@@ -16,12 +16,13 @@
                     <tr>
                         <td width="68%">
                             <img src="./upload/<?= $row['img']; ?>" style="width:180px;height:120px">
+                            <input type="hidden" name="id[]" value="<?= $row['id']; ?>">
                         </td>
                         <td width="7%">
                             <input type="checkbox" name="sh[]" value="<?= $row['id']; ?>" id="" <?= ($row['sh'] == 1) ? "checked" : "" ?>>
                         </td>
                         <td width="7%">
-                            <input type="checkbox" name="del[]" id="<?= $row['id']; ?>">
+                            <input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
                         </td>
                         <td>
                             <input type="button" value="更換動畫" onclick="op('#cover','#cvr','./modal/update_<?= $do; ?>.php?id=<?= $row['id']; ?>')">

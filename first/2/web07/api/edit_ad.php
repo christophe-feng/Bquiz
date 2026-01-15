@@ -1,4 +1,3 @@
-<!-- 編輯back/title.php資料 -->
 <?php
 include_once "db.php";
 
