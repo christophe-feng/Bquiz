@@ -25,7 +25,7 @@
                             <input type="radio" name="sh" value="<?= $row['id']; ?>" id="" <?= ($row['sh'] == 1) ? "checked" : "" ?>>
                         </td>
                         <td width="7%">
-                            <input type="checkbox" name="del[]" id="<?= $row['id']; ?>">
+                            <input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
                         </td>
                         <td>
                             <input type="button" value="更新圖片" onclick="op('#cover','#cvr','./modal/update_<?= $do; ?>.php?id=<?= $row['id']; ?>')">
