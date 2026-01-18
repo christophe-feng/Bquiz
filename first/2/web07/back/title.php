@@ -40,7 +40,7 @@
             <tbody>
                 <tr>
                     <td width="200px">
-                        <input type="button" onclick="op('#cover','#cvr','./modal/<?= $do; ?>.php')" value="新增網站標題圖片">
+                        <input type="button" onclick="op('#cover','#cvr','./modal/<?= $do; ?>.php?table=<?= $do; ?>')" value="新增網站標題圖片">
                     </td>
                     <td class="cent">
                         <input type="submit" value="修改確定">
