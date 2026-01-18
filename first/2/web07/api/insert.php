@@ -14,7 +14,9 @@ switch ($table) {
         $_POST['sh'] = ($DB->count(['sh' => 1]) == 0) ? 1 : 0;
         break;
     default:
-        $_POST['sh'] = 1;
+        if($table!='admin'){
+            $_POST['sh'] = 1;
+        }
 }
 
 
