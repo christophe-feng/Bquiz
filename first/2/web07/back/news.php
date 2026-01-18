@@ -1,31 +1,28 @@
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
-    <p class="t cent botli">動畫圖片管理</p>
-    <form method="post" action="./api/edit_mvim.php">
+    <p class="t cent botli">最新消息管理</p>
+    <form method="post" action="./api/edit_news.php">
         <table width="100%">
             <tbody>
                 <tr class="yel">
-                    <td width="68%">網站標題</td>
-                    <td width="7%">顯示</td>
-                    <td width="7%">刪除</td>
+                    <td width="80%">最新消息資料</td>
+                    <td width="10%">顯示</td>
+                    <td width="10%">刪除</td>
                     <td></td>
                 </tr>
                 <?php
-                $rows = $Mvim->all();
+                $rows = $News->all();
                 foreach ($rows as $row):
                 ?>
                     <tr>
-                        <td width="68%">
-                            <img src="./upload/<?= $row['img']; ?>" style="width:180px;height:120px">
-                            <input type="hidden" name="id[]" value="<?= $row['id']; ?>">
-                        </td>
-                        <td width="7%">
-                            <input type="checkbox" name="sh[]" value="<?= $row['id']; ?>" id="" <?= ($row['sh'] == 1) ? "checked" : "" ?>>
-                        </td>
-                        <td width="7%">
-                            <input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
+
+                        <td>
+                            <textarea name="text[<?= $row['id']; ?>]" style="width:95%;height:60px"><?= $row['text']; ?></textarea>
                         </td>
                         <td>
-                            <input type="button" value="更換動畫" onclick="op('#cover','#cvr','./modal/update_<?= $do; ?>.php?id=<?= $row['id']; ?>')">
+                            <input type="checkbox" name="sh[]" value="<?= $row['id']; ?>" id="" <?= ($row['sh'] == 1) ? "checked" : "" ?>>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
                         </td>
                     </tr>
                 <?php
@@ -37,7 +34,7 @@
             <tbody>
                 <tr>
                     <td width="200px">
-                        <input type="button" onclick="op('#cover','#cvr','./modal/<?= $do; ?>.php?table=<?= $do; ?>')" value="新增動畫圖片">
+                        <input type="button" onclick="op('#cover','#cvr','./modal/<?= $do; ?>.php?table=<?= $do; ?>')" value="新增最新消息">
                     </td>
                     <td class="cent">
                         <input type="submit" value="修改確定">
