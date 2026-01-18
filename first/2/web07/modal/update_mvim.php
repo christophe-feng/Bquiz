@@ -1,6 +1,6 @@
 <div class="cent">更換動畫</div>
 <hr>
-<form action="./api/update_mvim.php" method="post" enctype="multipart/form-data">
+<form action="./api/update.php?table=<?= $_GET['table']; ?>" method="post" enctype="multipart/form-data">
     <table style="width:70%;margin:auto">
         <tr>
             <td>動畫圖片</td>

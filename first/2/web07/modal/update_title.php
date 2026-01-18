@@ -1,7 +1,6 @@
-<!-- 更新網站標題管理的圖片 -->
 <div class="cent">更新圖片</div>
 <hr>
-<form action="./api/update_title.php" method="post" enctype="multipart/form-data">
+<form action="./api/update.php?table=<?= $_GET['table']; ?>" method="post" enctype="multipart/form-data">
     <table style="width:70%;margin:auto">
         <tr>
             <td>標題區圖片</td>
