@@ -19,7 +19,7 @@
                             <img src="./upload/<?= $row['img']; ?>" style="width:300px;height:30px">
                         </td>
                         <td width="23%">
-                            <input type="text" name='text[<?= $row['id']; ?>]' value="<?= $row['text']; ?>" >
+                            <input type="text" name='text[<?= $row['id']; ?>]' value="<?= $row['text']; ?>">
                         </td>
                         <td width="7%">
                             <input type="radio" name="sh" value="<?= $row['id']; ?>" id="" <?= ($row['sh'] == 1) ? "checked" : "" ?>>
@@ -28,7 +28,7 @@
                             <input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
                         </td>
                         <td>
-                            <input type="button" value="更新圖片" onclick="op('#cover','#cvr','./modal/update_<?= $do; ?>.php?id=<?= $row['id']; ?>')">
+                            <input type="button" value="更新圖片" onclick="op('#cover','#cvr','./modal/update.php?table=<?= $do; ?>&id=<?= $row['id']; ?>')">
                         </td>
                     </tr>
                 <?php
