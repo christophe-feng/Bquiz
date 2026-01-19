@@ -6,7 +6,7 @@ class DB
     protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db07_3";
     protected $pdo;
     protected $table;
-    
+
 
 
     function __construct($table)
@@ -57,7 +57,6 @@ class DB
 
     function save($array)
     {
-        $sql = '';
         if (isset($array['id'])) {
             // update
             $set = $this->array2sql($array);
@@ -76,8 +75,8 @@ class DB
     {
         $sql = "DELETE FROM $this->table";
 
-        if (is_array($id[0])) {
-            $where = $this->array2sql($id[0]);
+        if (is_array($id)) {
+            $where = $this->array2sql($id);
             $sql .= " WHERE " . join(" AND ", $where);
         } else {
             $sql .= " WHERE `id` = '{$id}'";
@@ -129,6 +128,27 @@ class DB
         return $this->pdo->query($sql)->fetchColumn();
     }
 
+    function max($col, ...$arg)
+    {
+        $sql = "SELECT max(`$col`) FROM $this->table";
+
+        if (isset($arg[0])) {
+            if (is_array($arg[0])) {
+                $where = $this->array2sql($arg[0]);
+                $sql .= " WHERE " . join(" AND ", $where);
+            } else {
+                $sql .= $arg[0];
+            }
+        }
+
+        if (isset($arg[1])) {
+            $sql .= $arg[1];
+        }
+
+
+        return $this->pdo->query($sql)->fetchColumn();
+    }
+
     private function array2sql($array)
     {
         $tmp = [];
@@ -157,3 +177,6 @@ function q($sql)
     $pdo = new PDO($dsn, 'root', '');
     return $pdo->query($sql)->fetchALL(PDO::FETCH_ASSOC);
 }
+
+
+$Poster = new DB('posters');
