@@ -30,10 +30,10 @@ if (isset($_POST['acc'])) {
       <h1>ABC影城</h1>
     </div>
     <div id="top2">
-      <a href="03P01.htm">首頁</a>
-      <a href="03P02.htm">線上訂票</a>
+      <a href="index.php">首頁</a>
+      <a href="index.php?do=order">線上訂票</a>
       <a href="#">會員系統</a>
-      <a href="03P03.htm">管理系統</a>
+      <a href="admin.php">管理系統</a>
     </div>
     <div id="text"> <span class="ct">最新活動</span>
       <marquee direction="right">
@@ -45,10 +45,10 @@ if (isset($_POST['acc'])) {
 if(isset($_SESSION['login'])){
   ?>
   <div class="ct a rb" style="position:relative; width:101.5%; left:-1%; padding:3px; top:-9px">
-    <a href="#">網站標題管理</a>
-    <a href="#">動態文字管理</a>
-    <a href="?do=poster">預告片海報管理</a>
-    <a href="?do=movie">院線片管理</a>
+    <a href="#">網站標題管理</a>|
+    <a href="#">動態文字管理</a>|
+    <a href="?do=poster">預告片海報管理</a>|
+    <a href="?do=movie">院線片管理</a>|
     <a href="?do=order">電影訂票管理</a>
   </div>
   <?php
@@ -64,7 +64,7 @@ if(isset($_SESSION['login'])){
 
 <form action="?" method="post">
   <h2 class="ct">管理登入</h2>
-  <table>
+  <table style="width: 50%;margin:auto">
     <tr>
       <td>帳號：</td>
       <td>
