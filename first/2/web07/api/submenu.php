@@ -23,8 +23,8 @@ if(!empty($_POST['new_text'])){
         if($text!==""){
             $href=$_POST['new_href'][$key];
             $Menu->save(['main_id'=>$_GET['main_id'],
-                             'text'=>$text,
-                             'href'=>$href]);
+                            'text'=>$text,
+                            'href'=>$href]);
         }
     }
 }
