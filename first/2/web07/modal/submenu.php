@@ -1,4 +1,4 @@
-<?php include_once "db.php" ?>
+<?php include_once "../api/db.php"; ?>
 <div class="cent">編輯次選單</div>
 <hr>
 <form action="./api/submenu.php?main_id=<?= $_GET['id']; ?>" method="post" enctype="multipart/form-data">
@@ -15,13 +15,13 @@
             <tr>
                 <td><input type="text" name="text[<?= $sub['id']; ?>]" value="<?= $sub['text']; ?>"></td>
                 <td><input type="text" name="href[<?= $sub['id']; ?>]" value="<?= $sub['href']; ?>"></td>
-                <td><input type="checkbox" name="del[]" id="<?= $sub['id']; ?>"></td>
+                <td><input type="checkbox" name="del[]" value="<?= $sub['id']; ?>"></td>
             </tr>
         <?php endforeach; ?>
     </table>
     <tr>
         <div class="cent">
-            <input type="submit" value="新增">
+            <input type="submit" value="修改確定">
             <input type="reset" value="重置">
             <input type="button" value="更多次選單" onclick="more()">
         </div>
@@ -30,8 +30,8 @@
 <script>
     function more() {
         let row = `<tr>
-                <td><input type="text" name="text" id=""></td>
-                <td><input type="text" name="href" id=""></td>
+                <td><input type="text" name="new_text[]" id=""></td>
+                <td><input type="text" name="new_href[]" id=""></td>
                 <td></td>
         </tr>`
         $("#subList").append(row);
