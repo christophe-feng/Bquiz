@@ -1,7 +1,7 @@
 <?php
+session_start();
 
-
-class DB
+Class DB
 {
     // protected $dsn="mysql:host=localhost;charset=utf8;dbname=db01";
     // protected $user="root";
