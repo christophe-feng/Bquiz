@@ -16,7 +16,7 @@
         ?>
             <div style="display: flex;justify-content:space-between;margin:3px 0;">
                 <div class="ct" style="width: 25%;">
-                    <img src="./upload/<?= $poster['img']; ?>" style="width: 60px;height: 80px;">
+                    <img src="./upload/<?= $poster['img']; ?>" style="width: 60px;height: 80;">
                 </div>
                 <div class="ct" style="width: 25%;">
                     <input type="text" name="name[]" value="<?= $poster['name']; ?>">
@@ -70,7 +70,7 @@
 <script>
 $(".sw").on("click",function() {
     let ids=$(this).data("sw").split("-");
-    $.post("./api/sw.php",{ids},(res)=>{
+    $.post("./api/sw.php",{ids,'table':'Poster'},(res)=>{
         location.reload();
     })
 })
