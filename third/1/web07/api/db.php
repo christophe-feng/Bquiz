@@ -1,6 +1,13 @@
 <?php
 session_start();
 
+$levelStr=[
+    1=>"普遍級",
+    2=>"輔導級",
+    3=>"保護級",
+    4=>"限制級",
+];
+
 class DB
 {
     protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db07_3";
@@ -180,3 +187,4 @@ function q($sql)
 
 
 $Poster = new DB('posters');
+$Movie = new DB('movies');
