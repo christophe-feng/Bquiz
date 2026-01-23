@@ -9,7 +9,9 @@ for($i=1;$i<=10;$i++){
         'publisher'=>"院線片{$i}發行商",
         'director'=>"院線片{$i}導演",
         'trailer'=>"03B".sprintf("%02d",$i)."v.mp4",
-        'poster'=>"03B"
-
-    ]
+        'poster'=>"03B".sprintf("%02d",$i).".png",
+        'sh'=>1,
+        'rank'=>$Movie->max('rank')+1,
+        'intro'=>"院線片{$i}的劇情簡介院線片{$i}的劇情簡介院線片{$i}的劇情簡介院線片{$i}的劇情簡介院線片{$i}的劇情簡介院線片{$i}的劇情簡介"
+    ];
 }
