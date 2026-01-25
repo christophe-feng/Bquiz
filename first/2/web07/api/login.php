@@ -1,6 +1,8 @@
 <?php
 include_once "db.php";
 
+$chk=$Admin->count($_POST);
+
 if($chk){
     $_SESSION['admin']=$_POST['acc'];
     to("../back.php");
