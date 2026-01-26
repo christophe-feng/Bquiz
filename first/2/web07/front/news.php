@@ -14,18 +14,18 @@
 	$start = ($now - 1) * $div;
 	$news = $News->all(['sh' => 1], "limit $start,$div");
 	?>
-	<ul class="ssaa" style="list-style-type:decimal;">
+	<ol class="ssaa" start="<?= $start + 1; ?>" style="list-style-type:decimal;">
 		<?php
 		foreach ($news as $n) {
-			echo "<li>";
+			echo "<li class='sswww'>";
 			echo mb_substr($n['text'], 0, 20);
 			echo "<div class='all' style='display:none;'>";
-			echo $n['text'];
+			echo nl2br($n['text']);
 			echo "</div>";
 			echo "</li>";
 		}
 		?>
-	</ul>
+	</ol>
 	<div style="text-align:center;">
 
 		<?php
@@ -46,3 +46,20 @@
 		?>
 	</div>
 </div>
+
+<div id="alt" style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
+<script>
+	$(".sswww").hover(
+		function() {
+			$("#alt").html("<pre>" + $(this).children(".all").html() + "</pre>").css({
+				"top": $(this).offset().top - 50
+			})
+			$("#alt").show()
+		}
+	)
+	$(".sswww").mouseout(
+		function() {
+			$("#alt").hide()
+		}
+	)
+</script>
