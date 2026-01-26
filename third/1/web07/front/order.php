@@ -48,9 +48,7 @@
 </div>
 </form>
 <div id="booking" style="display: none;">
-    劃位
-    <button class="prev-step">上一步</button>
-    <button class="order-btn">訂購</button>
+    
 </div>
 <div id="orderResult" style="display: none;">
     結果
@@ -100,6 +98,7 @@
             movieId
         }, function(dates) {
             $("#date").html(dates);
+            selectSession();
         })
     }
 
