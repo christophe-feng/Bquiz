@@ -39,6 +39,15 @@
 				<div id="menuput" class="dbor">
 					<!--主選單放此-->
 					<span class="t botli">主選單區</span>
+					<?php
+					$mains = $Menu->all(['main_id' => 0]);
+					foreach ($mains as $main) {
+						echo "<a href='{$main['href']}'>";
+						echo "<div class='mainmu'>{$main['text']}</div>";
+						echo "</a>";
+					}
+
+					?>
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
 					<span class="t">
