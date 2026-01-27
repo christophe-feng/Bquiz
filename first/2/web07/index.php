@@ -42,9 +42,12 @@
 					<?php
 					$mains = $Menu->all(['main_id' => 0]);
 					foreach ($mains as $main) {
-						echo "<a href='{$main['href']}'>";
-						echo "<div class='mainmu'>{$main['text']}</div>";
+						echo "<div class='mainmu'>";
+						echo "<a href='{$main['href']}'>{$main['text']}";
+						echo "<div class='mw mainmu2'><a href='123'>HI 1</a></div>";
+						echo "<div class='mw mainmu2'><a href='123'>HI 2</a></div>";
 						echo "</a>";
+						echo "</div>";
 					}
 
 					?>
