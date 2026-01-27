@@ -40,12 +40,22 @@
 					<!--主選單放此-->
 					<span class="t botli">主選單區</span>
 					<?php
-					$mains = $Menu->all(['main_id' => 0]);
+					$mains = $Menu->all(['main_id' => 0,'sh'=>1]);
 					foreach ($mains as $main) {
 						echo "<div class='mainmu'>";
 						echo "<a href='{$main['href']}'>{$main['text']}";
-						echo "<div class='mw mainmu2'><a href='123'>HI 1</a></div>";
-						echo "<div class='mw mainmu2'><a href='123'>HI 2</a></div>";
+						if($Menu->count(['main_id'=>$main['id']])>0){
+							$subs=$Menu->all(['main_id'=>$main['id']]);
+							echo "<div class='mw'>";
+							foreach($subs as $sub){
+								echo "<div class='mainmu2'>";
+								echo "<a href='{$sub['href']}'>";
+								echo $sub['text'];
+								echo "</a>";
+								echo "</div>";
+							}
+							echo "</div>";
+						}
 						echo "</a>";
 						echo "</div>";
 					}
