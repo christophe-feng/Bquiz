@@ -1,8 +1,10 @@
 <style>
   .lists {
     width: 210px;
-    height: 240px;
+    height: 250px;
     margin: auto;
+    position: relative;
+    overflow: hidden;
   }
 
   .controls {
@@ -16,7 +18,7 @@
 
   .btns {
     width: 280px;
-    height: 80px;
+    height: 100px;
     display: flex;
     overflow: hidden;
   }
@@ -26,6 +28,7 @@
     font-size: 12px;
     width: 70px;
     flex-shrink: 0;
+    position: relative;
   }
 
   .btn img {
@@ -51,7 +54,7 @@
 
   .poster {
     width: 210px;
-    height: 220px;
+    height: 240px;
     position: absolute;
     text-align: center;
     display: none;
@@ -67,7 +70,7 @@
         foreach ($posters as $idx => $poster):
         ?>
           <div class="poster" data-ani="<?= $poster['ani']; ?>">
-            <img src="upload/<?= $poster['img']; ?>" style="width:210px;height:220px;">
+            <img src="upload/<?= $poster['img']; ?>" style="width:100%;">
             <div><?= $poster['name']; ?></div>
           </div>
         <?php
@@ -135,6 +138,60 @@
         $(current).hide(1000, () => {
           $(next).show(1000);
         });
+        break;
+
+      case 21: //滑入滑出  //非必要
+        $(next).show()
+        $(next).css({
+          left: 215,
+          top: 0
+        })
+        $(current).animate({
+          left: -215,
+          top: 0,
+        }, 1000, () => {
+          $(current).hide();
+          $(current).css({
+            left: 0,
+            top: 0
+          })
+        });
+        $(next).animate({
+          left: 0,
+          top: 0
+        }, 1000);
+        break;
+
+      case 31: //從中間縮放  //非必要
+        $(current).animate({
+            width: 0,
+            height: 0,
+            left: 105,
+            top: 120,
+          }, 1000,
+          () => {
+            $(current).hide()
+            $(current).css({
+              width: 210,
+              height: 240,
+              left: 0,
+              top: 0
+            })
+            $(next).show()
+            $(next).css({
+              width: 0,
+              height: 0,
+              left: 105,
+              top: 110
+            })
+            $(next).animate({
+                width: 210,
+                height: 240,
+                left: 0,
+                top: 0,
+              }, 1000,
+              () => {});
+          });
         break;
     }
   }
