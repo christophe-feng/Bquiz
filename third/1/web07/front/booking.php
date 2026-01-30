@@ -101,7 +101,11 @@ $movie = $Movie->find($_GET['movidId']);
         let date=$("#date").val();
         let session=$("#session").val();
         $("api/order.php", {seats,movie,date,session}, (res) => {
-            console.log(seats,movie,date,session)
+            // console.log(seats,movie,date,session)
+            // console.log(res)
+
+            $("#orderResult").html(res);
+            
             $("#booking").hide();
             $("#orderForm").hide();
             $("#orderResult").show();
