@@ -5,7 +5,16 @@
         <div><input type="text" name="email" id="email"></div>
         <div id="result"></div>
         <div>
-            <input type="submit" value="尋找">
+            <input type="button" value="尋找" onclick="forgot()">
         </div>
     </form>
 </fieldset>
+
+<script>
+    function forgot(){
+        let email=$("#email").val();
+        $.get("./api/chk_email.php",{email},(res)=>{
+            $("#result").text(res);
+        })
+    }
+</script>

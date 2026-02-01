@@ -29,7 +29,7 @@
             </tr>
             <tr>
                 <td>
-                    <input type="submit" value="註冊">
+                    <input type="button" value="註冊" onclick='reg()'>
                     <input type="reset" value="清除">
                 </td>
                 <td></td>
@@ -37,3 +37,58 @@
         </table>
     </form>
 </fieldset>
+
+<script>
+    function reg(){
+        let user={
+            'acc':$("#acc").val(),
+            'pw':$("#pw").val(),
+            'pw2':$("#pw2").val(),
+            'email':$("#email").val()
+        };
+
+    //     if(user.acc !='' && user.pw !='' && user.pw2 !='' && user.email !=''){
+    //         if(user.pw == user.pw2){
+    //             $.get('./api/chk_acc.php',{'acc':user.acc},(chk)=>{
+    //                 console.log(chk)
+    //                 if(!parseInt(chk)){
+    //                     $.post("./api/reg.php",user,(res)=>{
+    //                         console.log(res)
+    //                         alert("註冊成功，歡迎加入")
+    //                         $("form").trigger('reset');
+    //                     })
+    //                 }else{
+    //                     alert("帳號重複")
+    //                 }
+    //             })
+    //         }else{
+    //             alert("密碼錯誤")
+    //         }
+    //     }else{
+    //         alert("不可空白")
+    //     }
+    
+    if(user.acc == '' || user.pw == '' || user.pw2 == '' || user.email == ''){
+        alert("不可空白");
+        return;
+    }
+
+    if(user.pw != user.pw2){
+        alert("密碼錯誤");
+        return;
+    }
+
+    $.get('./api/chk_acc.php',{'acc':user.acc},(chk)=>{
+        console.log(chk);
+        if(parseInt(chk)){
+            alert("帳號重複");
+            return;
+        }
+        $.post("./api/reg.php",user,(res)=>{
+            console.log(res);
+            alert("註冊成功，歡迎加入");
+            $("form").trigger('reset');
+        })
+    })
+    }
+</script>
