@@ -21,7 +21,7 @@ class DB
 
     function all(...$arg)
     {
-        $sql = "SELECT * FROM $this ->table";
+        $sql = "SELECT * FROM $this->table ";
         if (isset($arg[0])) {
             if (is_array($arg[0])) {
                 $where = $this->array2sql($arg[0]);
@@ -128,7 +128,7 @@ function dd($array)
 
 function to($url)
 {
-    header("location" . $url);
+    header("location:" . $url);
 }
 
 function q($sql)
