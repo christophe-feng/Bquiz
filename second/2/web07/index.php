@@ -44,11 +44,11 @@
 						<?php if (isset($_SESSION['login'])): ?>
 							<?php if ($_SESSION['login'] == 'admin'): ?>
 								歡迎，<?= $_SESSION['login']; ?><br>
-								<button>管理</button>
-								<button>登出</button>
+								<button onclick="location.href='back.php'">管理</button>
+								<button onclick="location.href='index.php'">登出</button>
 							<?php else: ?>
-								歡迎，<?= $_SESSION['login']; ?><br>
-								<button>登出</button>
+								歡迎，<?= $_SESSION['login']; ?>
+								<button onclick="location.href='index.php'">登出</button>
 							<?php endif; ?>
 						<?php else: ?>
 							<a href="?do=login">會員登入</a>
