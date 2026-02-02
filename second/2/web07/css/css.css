@@ -31,7 +31,8 @@ a:hover
 }
 #mm
 {
-	min-height:570px;
+	min-height:540px;
+	padding-top:3px;
 }
 #all
 {
@@ -62,14 +63,11 @@ a:hover
 	position:relative;
 	top:-3px;
 }
-#mm
-{
-	padding-top:3px;
-}
+
 #main
 {
 	display:inline-block;
-	width:78%;
+	width:79%;
 	height:540px;
 	padding:4px;
 	border:solid 1px #000000;
