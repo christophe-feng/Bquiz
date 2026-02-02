@@ -2,3 +2,4 @@
 
 $Mem->save($_POST);
 
+to("../admin.php?do=mem");
