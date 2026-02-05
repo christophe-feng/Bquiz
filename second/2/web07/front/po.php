@@ -1,5 +1,5 @@
 <style>
-    .po-item{
+    .po-item {
         display: block;
         margin: 5px;
     }
@@ -16,16 +16,35 @@
 </fieldset>
 <fieldset style="width: 70%; padding:10px; display: inline-block;">
     <legend>文章列表</legend>
+    <div class="list"></div>
+    <div class="content" style="display: none;"></div>
 </fieldset>
 
 <script>
-    $(".po-item").on("click",function(){
-        let item=$(this).text();
-        $("#nav").text(item);
-        let type=$(this).data('type')
+    getList(1);
 
-        $.get("./api/get_list.php",{type},(list)=>{
-            $(".list").html(list);
-        })
+    $(".po-item").on("click", function() {
+        let item = $(this).text();
+        $("#nav").text(item);
+        let type = $(this).data('type')
+        getList(type);
     })
+
+    function getList(type) {
+        $.get("./api/get_list.php", {
+            type
+        }, (list) => {
+            $(".list").html(list);
+            $(".list").show();
+            $(".content").hide();
+        })
+    }
+
+    function getPost(id){
+        $.get("./api/get_post.php",{id},(post)=>{
+            $(".content").html(post);
+            $(".list").hide();
+            $(".content").show();
+        })
+    }
 </script>
