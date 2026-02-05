@@ -3,6 +3,7 @@
     <form action="./api/add_que.php" method="post">
         <div>
             <label for="">問卷名稱</label>
+            <input type="text" name="subject" id="">
         </div>
         <div id="options">
             <div>
