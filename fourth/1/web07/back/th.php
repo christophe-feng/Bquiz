@@ -18,24 +18,24 @@
     ?>
         <tr class="tt">
             <td><?= $big['name']; ?></td>
-            <td>
+            <td class="ct">
                 <button class="edit-btn" data-id="<?= $big['id']; ?>">修改</button>
-                <button class="del-btn" data-id="<?= $big['id']; ?>">刪除</button>
+                <button class="del-btn" data-table="Type" data-id="<?= $big['id']; ?>">刪除</button>
             </td>
         </tr>
         <?php
         if ($Type->count(['big_id' => $big['id']]) > 0):
-            $mids=$Type->all(['big_id'=>$big['id']]>0);
-            foreach($mids as $mid):
+            $mids = $Type->all(['big_id' => $big['id']]);
+            foreach ($mids as $mid):
         ?>
-            <tr class="pp ct">
-                <td><?= $mid['name']; ?></td>
-                <td>
-                    <button class="edit-btn" data-id="<?= $mid['id']; ?>">修改</button>
-                    <button class="del-btn" data-id="<?= $mid['id']; ?>">刪除</button>
-            </tr>
+                <tr class="pp ct">
+                    <td><?= $mid['name']; ?></td>
+                    <td>
+                        <button class="edit-btn" data-id="<?= $mid['id']; ?>">修改</button>
+                        <button class="del-btn" data-table="Type" data-id="<?= $mid['id']; ?>">刪除</button>
+                </tr>
         <?php
-        endforeach;
+            endforeach;
         endif;
         ?>
 
@@ -48,7 +48,39 @@
 </table>
 
 <h2 class="ct">商品管理</h2>
+<div class="ct">
+    <button onclick="location.href='?do=add_item'">新增商品</button>
+</div>
+<table class="all">
+    <tr class="tt ct">
+        <td>編號</td>
+        <td>商品名稱</td>
+        <td>庫存量</td>
+        <td>狀態</td>
+        <td>操作</td>
+    </tr>
+    <?php
+    $items = $Item->all();
 
+    foreach ($items as $item):
+
+    ?>
+        <tr class="pp ct">
+            <td><?= $item['no']; ?></td>
+            <td><?= $item['name']; ?></td>
+            <td><?= $item['stock']; ?></td>
+            <td><?= ($item['sh'] == 1) ? '販售中' : '已下架'; ?></td>
+            <td>
+                <button data-table="Item" data-id="<?= $item['id']; ?>" onclick="location.href='?do=edit_it&id=<?= $item['id']; ?>'">修改</button>
+                <button class="del-btn" data-table="Item" data-id="<?= $item['id']; ?>">刪除</button>
+                <button class="on-btn" data-sh="1" data-table="Item" data-id="<?= $item['id']; ?>">上架</button>
+                <button class="off-btn" data-sh="0" data-table="Item" data-id="<?= $item['id']; ?>">下架</button>
+            </td>
+        </tr>
+
+
+    <?php endforeach; ?>
+</table>
 <script>
     getBigs();
 
@@ -58,7 +90,6 @@
         switch (type) {
             case 'big':
                 name = $("#big").val();
-
                 break;
             case 'mid':
                 name = $("#mid").val();
@@ -79,19 +110,45 @@
         })
     }
 
-    $("#.del-btn").on("click",function(){
-        let id=$(this).data(id);
-        $.post("api/del.php",{id,table:"Type"},()=>{
+    $("#.del-btn").on("click", function() {
+        let id = $(this).data(id);
+        let table = $(this).data('table');
+        $.post("api/del.php", {
+            id,
+            table
+        }, () => {
             location.reload()
         })
     })
 
-    $(".edit-btn").on('click',function(){
-        let id=$(this).data(id);
-        let text=$(this).parent().prev().text();
-        let name=prompt("請輸入分類名稱",text);
-        $.post("api/save_type.php",{id,name},()=>{
+    $(".edit-btn").on('click', function() {
+        let id = $(this).data(id);
+        let text = $(this).parent().prev().text();
+        let name = prompt("請輸入分類名稱", text);
+        $.post("api/save_type.php", {
+            id,
+            name
+        }, () => {
             location.reload();
+        })
+    })
+
+    $(".on-btn,.off-btn").on("click", function() {
+        let id = $(this).data('id');
+        let sh = $(this).data('sh');
+        $.post("api/save_sh.php", {
+            id,
+            sh
+        }, () => {
+            // location.reload();
+            switch (sh) {
+                case 1:
+                    $(this).parent().prev().text('販售中')
+                    break;
+                case 0:
+                    $(this).parent().prev().text('已下架')
+                    break;
+            }
         })
     })
 </script>
