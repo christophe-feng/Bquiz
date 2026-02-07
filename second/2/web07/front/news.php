@@ -18,28 +18,67 @@
         foreach ($posts as $post):
         ?>
             <tr>
-                <td><?= $post['title'] ?></td>
-                <td><?= mb_substr($post['text'], 0, 25); ?>...</td>
-                <td></td>
+                <td class="title"><?= $post['title']; ?></td>
+                <td class="post">
+                    <span class="short">
+                        <?= mb_substr($post['text'], 0, 25); ?>...
+                    </span>
+                    <span class="full" style="display: none;">
+                        <?= nl2br($post['text']); ?>...
+                    </span>
+                </td>
+                <td>
+                    <?php
+                    if (isset($_SESSION['login'])) {
+                        $post_id=$post['id'];
+                        $member_id=$Mem->find(['acc'=>$_SESSION['login']])['id'];
+                        if($Log->count(['post_id'=>$post_id,'member_id'=>$member_id])>0){
+                            echo "<a href='#' class='great' data-id='{$post['id']}'>收回讚</a>";
+                        }else{
+                            echo "<a href='#' class='great' data-id='{$post['id']}'>讚</a>";
+                        }
+                    }
+                    ?>
+                </td>
             </tr>
         <?php
         endforeach;
         ?>
     </table>
     <?php
-if($now-1>0){
-    $prev=$now-1;
-    echo "<a href='?do=news&p=$prev'> < </a>";
-}
+    if ($now - 1 > 0) {
+        $prev = $now - 1;
+        echo "<a href='?do=news&p=$prev'> < </a>";
+    }
 
-for($i=1;$i<=$pages;$i++){
-    $font=($i==$now)?"24px;":"16px;";
-    echo "<a href='?do=news&p=$i' style'font-size:$font'> $i </a>";
-}
+    for ($i = 1; $i <= $pages; $i++) {
+        $font = ($i == $now) ? "24px;" : "16px;";
+        echo "<a href='?do=news&p=$i' style'font-size:$font'> $i </a>";
+    }
 
-if($now+1<=$pages){
-    $next=$now+1;
-    echo "<a href='?do=news&p=$next'> > </a>";
-}
+    if ($now + 1 <= $pages) {
+        $next = $now + 1;
+        echo "<a href='?do=news&p=$next'> > </a>";
+    }
     ?>
 </fieldset>
+
+<script>
+    $(".title").on("click", function() {
+        $(this).next().children('.short,.full').toggle();
+    })
+    $(".great").on("click",function(){
+        let id=$(this).data('id')
+        let str=$(this).text();
+        $.post("./api/good.php",{id},()=>{
+            switch(str){
+                case "讚":
+                    $(this).text("收回讚")
+                break;
+                case "收回讚":
+                    $(this).text("讚")
+                break;
+            }
+        })
+    })
+</script>

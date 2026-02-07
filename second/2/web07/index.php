@@ -10,16 +10,32 @@
 	<link href="./css/css.css" rel="stylesheet" type="text/css">
 	<script src="./js/jquery-1.9.1.min.js"></script>
 	<script src="./js/js.js"></script>
+	<style>
+		#alert {
+			background: rgba(51, 51, 51, 0.8);
+			color: #FFF;
+			min-height: 200px;
+			max-height: 400px;
+			width: 390px;
+			position: fixed;
+			display: none;
+			z-index: 9999;
+			overflow: auto;
+			left: 530px;
+			top: 350px;
+			padding: 10px;
+		}
+	</style>
 </head>
 
 <body>
-	<div id="alerr" style="background:rgba(51,51,51,0.8); color:#FFF; min-height:100px; width:300px; position:fixed; display:none; z-index:9999; overflow:auto;">
+	<div id="alert">
 		<pre id="ssaa"></pre>
 	</div>
 	<iframe name="back" style="display:none;"></iframe>
 	<div id="all">
 		<div id="title">
-			<?= date("m 月 d 號 l") ?> | 今日瀏覽: <?= $Total->find(['date'=>date("Y-m-d")])['total']; ?> | 累積瀏覽: <?= $Total->sum('total'); ?>
+			<?= date("m 月 d 號 l") ?> | 今日瀏覽: <?= $Total->find(['date' => date("Y-m-d")])['total']; ?> | 累積瀏覽: <?= $Total->sum('total'); ?>
 			<a href="index.php" style="float: right;">回首頁</a>
 		</div>
 		<div id="title2">
