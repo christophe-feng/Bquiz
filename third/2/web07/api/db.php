@@ -65,7 +65,7 @@ class DB{
     }
 
     function del($id){
-        $sql="DELETE FORM $this->table ";
+        $sql="DELETE FROM $this->table ";
         if(is_array($id)){
             $where=$this->array2sql($id);
             $sql .= " WHERE ".join(" AND ",$where);
