@@ -1,6 +1,46 @@
 <div>預告片清單</div>
-
-
+<div style="display: flex;justify-content:space-between;">
+    <div class="ct" style="width: 25%;">預告片海報</div>
+    <div class="ct" style="width: 25%;">預告片片名</div>
+    <div class="ct" style="width: 25%;">預告片排序</div>
+    <div class="ct" style="width: 25%;">操作</div>
+</div>
+<form action="./api/edit_poster.php" method="post">
+    <div style="height: 200px; overflow: auto;">
+        <?php
+        $posters = $Poster->all(" ORDER BY `rank` ASC");
+        foreach ($posters as $poster):
+        ?>
+            <div style="display: flex;justify-content:space-between;margin:3px 0;">
+                <div class="ct" style="width: 25%;">
+                    <img src="./upload/<?= $poster['img']; ?>" style="width: 60px;height:80">
+                </div>
+                <div class="ct" style="width: 25%;">
+                    <input type="text" name="name" value="<?= $poster['name']; ?>">
+                </div>
+                <div class="ct" style="width: 25%;">
+                    <input type="button" value="往上">
+                    <input type="button" value="往下">
+                </div>
+                <div class="ct" style="width: 25%;">
+                    <select name="ani" id="">
+                        <option value="1" <?= ($poster['ani'] == 1) ? 'selected' : ''; ?>>淡入淡出</option>
+                        <option value="2" <?= ($poster['ani'] == 2) ? 'selected' : ''; ?>>滑入滑出</option>
+                        <option value="3" <?= ($poster['ani'] == 3) ? 'selected' : ''; ?>>縮放</option>
+                    </select>
+                    <input type="checkbox" name="sh[]" value="<?= $poster['id']; ?>" <?= ($poster['sh'] == 1) ? 'checked' : ''; ?>>顯示
+                    <input type="checkbox" name="del[]" value="<?= $poster['id']; ?>">刪除
+                </div>
+            </div>
+        <?php
+        endforeach;
+        ?>
+    </div>
+    <div class="ct">
+        <input type="submit" value="編輯確定">
+        <input type="reset" value="重置">
+    </div>
+</form>
 
 <hr>
 <div>新增預告片海報</div>
