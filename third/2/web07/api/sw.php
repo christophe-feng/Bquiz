@@ -1,12 +1,13 @@
 <?php
 include_once "db.php";
+$db=${$_POST['table']};
 
-$poster1=$Poster->find($_POST['ids'][0]);
-$poster2=$Poster->find($_POST['ids'][1]);
+$row1=$db->find($_POST['ids'][0]);
+$row2=$db->find($_POST['ids'][1]);
 
-$tmp=$poster1['rank'];
-$poster1['rank']=$poster2['rank'];
-$poster2['rank']=$tmp;
+$tmp=$row1['rank'];
+$row1['rank']=$row2['rank'];
+$row2['rank']=$tmp;
 
-$Poster->save($poster1);
-$Poster->save($poster2);
+$db->save($row1);
+$db->save($row2);
