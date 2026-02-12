@@ -52,7 +52,10 @@ foreach($movies as $idx => $movie):
             <button onclick="location.href='?do=edit_movie&id=<?= $movie['id']; ?>'">編輯電影</button>
             <button onclick="location.href='api/del_movie.php?id=<?= $movie['id']; ?>'">刪除電影</button>
         </div>
-        <div></div>
+        <div>
+            劇情簡介：
+            <?= $movie['intro']; ?>
+        </div>
     </div>
 </div>
 <?php
@@ -68,7 +71,7 @@ endforeach;
     }
 
     $(".sw").on("click",function(){
-        let ids=$(this).data("sw").spilt("-");
+        let ids=$(this).data("sw").split("-");
         $.post("./api/sw.php",{ids,'table':'Movie'},(res)=>{
             location.reload();
         })
