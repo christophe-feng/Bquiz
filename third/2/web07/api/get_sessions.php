@@ -2,15 +2,8 @@
 include_once "db.php";
 
 $movieId = $_GET['movieId'];
+$movie=$Movie->find($movieId)['name'];
 $date = strtotime($_GET['date']);
-
-$duration = [
-    1 => "14:00 ~ 16:00",
-    2 => "16:00 ~ 18:00",
-    3 => "18:00 ~ 20:00",
-    4 => "20:00 ~ 22:00",
-    5 => "22:00 ~ 24:00"
-];
 
 $today = strtotime(date("Y-m-d"));
 $start = 1;
@@ -22,5 +15,7 @@ if($date==$today){
 }
 
 for($i=$start;$i<=5;$i++){
-    echo "<option value='$i'>{$duration[$i]} 剩餘座位 20</option>";
+    // $sql="SELECT sum(`qt`) as 'qt' FROM `orders` WHERE movie='$movie' && date='{$_GET['date']}' && session='{$duration[$i]}'";
+    $qt=20-$Order->sum('qt'," WHERE movie='$movie' && date='{$_GET['date']}' && session='{$duration[$i]}'");
+    echo "<option value='$i'>{$duration[$i]} 剩餘座位 $qt</option>";
 }
