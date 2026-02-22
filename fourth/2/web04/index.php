@@ -34,30 +34,51 @@
         <div id="left" class="ct">
             <div style="min-height:400px;">
                 <!-- 選單區 -->
+                <a href="?type=0">全部商品(<?= $Item->count(['sh' => 1]); ?>)</a>
+                <?php
+                $bigs = $Type->all(['big_id' => 0]);
+                foreach ($bigs as $big):
+                ?>
+                    <div class="ww">
+                        <a href="?type=<?= $big['id']; ?>"><?= $big['name']; ?>(<?= $Item->count(['sh' => 1, 'big' => $big['id']]); ?>)</a>
+                        <?php
+                        if ($Type->count(['big_id' => $big['id']]) > 0) {
+                            $mids = $Type->all(['big_id' => $big['id']]);
+                            echo "<div class='s'>";
+                            foreach ($mids as $mid):
+                        ?>
+                                <a href="?type=<?= $mid['id']; ?>"><?= $mid['name']; ?>(<?= $Item->count(['sh' => 1, 'mid' => $mid['id']]); ?>)</a>
+                    <?php
+                            endforeach;
+                            echo "</div>";
+                        }
+                        echo "</div>";
+                    endforeach;
+                    ?>
+                    </div>
+                    <span>
+                        <div>進站總人數</div>
+                        <div style="color:#f00; font-size:28px;">
+                            00005
+                        </div>
+                    </span>
             </div>
-            <span>
-                <div>進站總人數</div>
-                <div style="color:#f00; font-size:28px;">
-                    00005
-                </div>
-            </span>
+            <div id="right">
+                <!-- 主內容區 -->
+                <?php
+                $do = $_GET['do'] ?? 'main';
+                $file = "front/" . $do . ".php";
+                if (file_exists($file)) {
+                    include $file;
+                } else {
+                    include "front/main.php";
+                }
+                ?>
+            </div>
+            <div id="bottom" style="line-height:70px;background:url(icon/bot.png); color:#FFF;" class="ct">
+                <?= $Bot->find(1)['bot']; ?>
+            </div>
         </div>
-        <div id="right">
-            <!-- 主內容區 -->
-            <?php
-            $do = $_GET['do'] ?? 'main';
-            $file = "front/" . $do . ".php";
-            if (file_exists($file)) {
-                include $file;
-            } else {
-                include "front/main.php";
-            }
-            ?>
-        </div>
-        <div id="bottom" style="line-height:70px;background:url(icon/bot.png); color:#FFF;" class="ct">
-            <?= $Bot->find(1)['bot']; ?> 
-        </div>
-    </div>
 
 </body>
 
