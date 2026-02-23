@@ -4,14 +4,13 @@
         <tr>
             <td class="tt ct">所屬大分類</td>
             <td class="pp">
-                <select type="big" name="big" id="big"></select>
+                <select name="big" id="big"></select>
             </td>
         </tr>
         <tr>
             <td class="tt ct">所屬中分類</td>
             <td class="pp">
-                <select type="text" name="mid" id="mid">
-                </select>
+                <select name="mid" id="mid"></select>
             </td>
         </tr>
         <tr>
@@ -40,7 +39,7 @@
         </tr>
         <tr>
             <td class="tt ct">商品介紹</td>
-            <td class="pp"><textarea type="text" name="intro" id="intro"></td>
+            <td class="pp"><textarea name="intro" id="intro"></textarea></td>
     </tr>
 </table>
 

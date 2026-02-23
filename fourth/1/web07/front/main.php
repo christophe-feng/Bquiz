@@ -15,10 +15,6 @@ if (isset($_GET['type']) && $_GET['type'] != 0) {
     $nav_str = "全部商品";
     $rows = $Item->all(['sh' => 1]);
 }
-
-
-
-
 ?>
 
 <h2><?= $nav_str; ?></h2>
