@@ -33,7 +33,7 @@
             ans
         }, (res) => {
             if (parseInt(res)) {
-                $.get("api/chk_pw.php", {
+                $.get("api/chk_admin_pw.php", {
                     acc: $("#acc").val(),
                     pw: $("$pw").val()
                 }, (chk) => {
