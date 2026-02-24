@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2026-02-22 18:46:31
+-- 產生時間： 2026-02-24 09:31:08
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -123,6 +123,25 @@ INSERT INTO `members` (`id`, `acc`, `pw`, `name`, `tel`, `address`, `email`, `re
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `no` int(10) UNSIGNED NOT NULL,
+  `acc` text NOT NULL,
+  `name` text NOT NULL,
+  `tel` text NOT NULL,
+  `address` text NOT NULL,
+  `email` text NOT NULL,
+  `sum` int(10) UNSIGNED NOT NULL,
+  `cart` text NOT NULL,
+  `order_date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `types`
 --
 
@@ -178,6 +197,12 @@ ALTER TABLE `members`
   ADD PRIMARY KEY (`id`);
 
 --
+-- 資料表索引 `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 資料表索引 `types`
 --
 ALTER TABLE `types`
@@ -210,6 +235,12 @@ ALTER TABLE `items`
 --
 ALTER TABLE `members`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `types`
