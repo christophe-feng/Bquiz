@@ -2,7 +2,7 @@
 <?php
 $order = $Order->find($_GET['id']);
 ?>
-<h2 class="ct">訂單編號<span style="color: red;"><?= $order['id']; ?></span>的詳細資料</h2>
+<h2 class="ct">訂單編號<span style="color: red;"><?= $order['no']; ?></span>的詳細資料</h2>
 <!-- table.all>tr*5>td.tt.ct+td.pp>input:text -->
 <table class="all">
     <tr>
@@ -11,19 +11,19 @@ $order = $Order->find($_GET['id']);
     </tr>
     <tr>
         <td class="tt ct">姓名</td>
-        <td class="pp"></td>
+        <td class="pp"><?= $order['name']; ?></td>
     </tr>
     <tr>
         <td class="tt ct">電子信箱</td>
-        <td class="pp"> </td>
+        <td class="pp"><?= $order['email']; ?></td>
     </tr>
     <tr>
         <td class="tt ct">聯絡地址</td>
-        <td class="pp"></td>
+        <td class="pp"><?= $order['address']; ?></td>
     </tr>
     <tr>
         <td class="tt ct">聯絡電話</td>
-        <td class="pp"></td>
+        <td class="pp"><?= $order['tel']; ?></td>
     </tr>
 </table>
 
@@ -39,7 +39,7 @@ $order = $Order->find($_GET['id']);
     <?php
     $cart = unserialize($order['cart']);
     foreach ($cart as $id => $qt):
-        $Item = $Item->find($id);
+        $item = $Item->find($id);
     ?>
         <tr class="pp ct">
             <td><?= $item['name']; ?></td>
@@ -53,7 +53,7 @@ $order = $Order->find($_GET['id']);
     ?>
 </table>
 <div class="all tt ct">
-    總價：<?= $sum; ?>
+    總價：<?= $order['sum']; ?>
 </div>
 <!-- .ct>input:submit+input:button -->
 <div class="ct">

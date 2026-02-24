@@ -39,7 +39,7 @@
         <?php
         $sum = 0;
         foreach ($_SESSION['buycart'] as $id => $qt):
-            $Item = $Item->find($id);
+            $item = $Item->find($id);
         ?>
             <tr class="pp ct">
                 <td><?= $item['name']; ?></td>

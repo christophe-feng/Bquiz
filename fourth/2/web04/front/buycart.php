@@ -27,6 +27,7 @@ if (empty($_SESSION['buycart'])) {
         </tr>
         <?php
         foreach ($_SESSION['buycart'] as $id => $qt):
+            $item=$Item->find($id);
         ?>
             <tr class="pp ct">
                 <td><?= $item['no']; ?></td>
@@ -37,7 +38,7 @@ if (empty($_SESSION['buycart'])) {
                 <td><?= $item['price'] * $qt; ?></td>
                 <td>
                     <a href="#" onclick="delItem(<?= $id; ?>)">
-                        <img src="icom/0415.jpg" alt="">
+                        <img src="icon/0415.jpg" alt="">
                     </a>
                 </td>
             </tr>
@@ -47,7 +48,7 @@ if (empty($_SESSION['buycart'])) {
     </table>
     <div class="ct">
         <img src="icon/0411.jpg" onclick="location.href='index.php'">
-        <img src="icon/0412.jpg" onclick="location.href='?do=checkout.php'">
+        <img src="icon/0412.jpg" onclick="location.href='?do=checkout'">
     </div>
 <?php
 }
