@@ -14,7 +14,7 @@
     <tr>
         <td class="pp ct"><?= $row['name']; ?></td>
         <td class="pp ct"><?= $row['acc']; ?></td>
-        <td class="pp ct"><?= $row['reg_date']; ?></td>
+        <td class="pp ct"><?= str_replace("-","/",$row['reg_date']); ?></td>
         <td class="pp ct">
             <button class="edit-btn" data-id="<?= $row['id']; ?>">修改</button>
             <button class="del-btn" data-id="<?= $row['id']; ?>">刪除</button>

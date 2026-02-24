@@ -1,0 +1,61 @@
+<!-- 可以從back裡的checkout複製過來後再做修改 -->
+<?php
+$order = $Order->find($_GET['id']);
+?>
+<h2 class="ct">訂單編號<span style="color: red;"><?= $order['id']; ?></span>的詳細資料</h2>
+<!-- table.all>tr*5>td.tt.ct+td.pp>input:text -->
+<table class="all">
+    <tr>
+        <td class="tt ct">登入帳號</td>
+        <td class="pp"><?= $order['acc']; ?></td>
+    </tr>
+    <tr>
+        <td class="tt ct">姓名</td>
+        <td class="pp"></td>
+    </tr>
+    <tr>
+        <td class="tt ct">電子信箱</td>
+        <td class="pp"> </td>
+    </tr>
+    <tr>
+        <td class="tt ct">聯絡地址</td>
+        <td class="pp"></td>
+    </tr>
+    <tr>
+        <td class="tt ct">聯絡電話</td>
+        <td class="pp"></td>
+    </tr>
+</table>
+
+<!-- table.all>(tr.tt.ct>td*5)+(tr.pp.ct>td*5) -->
+<table class="all">
+    <tr class="tt ct">
+        <td>商品名稱</td>
+        <td>編號</td>
+        <td>數量</td>
+        <td>單價</td>
+        <td>小計</td>
+    </tr>
+    <?php
+    $cart = unserialize($order['cart']);
+    foreach ($cart as $id => $qt):
+        $Item = $Item->find($id);
+    ?>
+        <tr class="pp ct">
+            <td><?= $item['name']; ?></td>
+            <td><?= $item['no']; ?></td>
+            <td><input type="number" value="<?= $qt; ?>" style="width:35px"></td>
+            <td><?= $item['price']; ?></td>
+            <td><?= $item['price'] * $qt; ?></td>
+        </tr>
+    <?php
+    endforeach;
+    ?>
+</table>
+<div class="all tt ct">
+    總價：<?= $sum; ?>
+</div>
+<!-- .ct>input:submit+input:button -->
+<div class="ct">
+    <button onclick="location.href='?do=order'">返回</button>
+</div>
