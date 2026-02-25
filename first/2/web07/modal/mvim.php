@@ -1,3 +1,4 @@
+<!-- 可以從ad複製過來再做修改 -->
 <div class="cent">新增動畫圖片</div>
 <hr>
 <form action="./api/insert.php?table=<?= $_GET['table']; ?>" method="post" enctype="multipart/form-data">
