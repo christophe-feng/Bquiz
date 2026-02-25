@@ -1,3 +1,4 @@
+<!-- 可以從ad複製過來再做修改 -->
 <?php
 switch($_GET['table']){
     case "title":

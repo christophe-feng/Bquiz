@@ -14,8 +14,6 @@ if(!empty($_POST['text'])){
     }
 }
 
-
-
 // 新增次選單
 if(!empty($_POST['new_text'])){
 

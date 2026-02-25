@@ -10,15 +10,15 @@
             <?php
             $members = $Mem->all();
             foreach ($members as $member):
-                if($member['acc']!='admin'):
+                if ($member['acc'] != 'admin'):
             ?>
-                <tr>
-                    <td><?= $member['acc']; ?></td>
-                    <td><?= str_repeat("*",mb_strlen($member['pw'])); ?></td>
-                    <td><input type="checkbox" name="del[]" value="<?= $member['id']; ?>"></td>
-                </tr>
+                    <tr>
+                        <td><?= $member['acc']; ?></td>
+                        <td><?= str_repeat("*", mb_strlen($member['pw'])); ?></td>
+                        <td><input type="checkbox" name="del[]" value="<?= $member['id']; ?>"></td>
+                    </tr>
             <?php
-            endif;
+                endif;
             endforeach;
             ?>
         </table>
@@ -27,7 +27,7 @@
             <input type="reset" value="清空選取">
         </div>
     </form>
-<h2>新增會員</h2>
+    <h2>新增會員</h2>
     <div style="color: red;">*請設定您要註冊的帳號及密碼(最長12個字元)</div>
     <form action="./api/reg.php" method="post">
         <table>
@@ -67,34 +67,36 @@
 </fieldset>
 
 <script>
-    function reg(){
-        let user={
-            'acc':$("#acc").val(),
-            'pw':$("#pw").val(),
-            'pw2':$("#pw2").val(),
-            'email':$("#email").val()
+    function reg() {
+        let user = {
+            'acc': $("#acc").val(),
+            'pw': $("#pw").val(),
+            'pw2': $("#pw2").val(),
+            'email': $("#email").val()
         };
-    
-    if(user.acc == '' || user.pw == '' || user.pw2 == '' || user.email == ''){
-        alert("不可空白");
-        return;
-    }
 
-    if(user.pw != user.pw2){
-        alert("密碼錯誤");
-        return;
-    }
-
-    $.get('./api/chk_acc.php',{'acc':user.acc},(chk)=>{
-        // console.log(chk);
-        if(parseInt(chk)){
-            alert("帳號重複");
+        if (user.acc == '' || user.pw == '' || user.pw2 == '' || user.email == '') {
+            alert("不可空白");
             return;
         }
-        $.post("./api/reg.php",user,(res)=>{
-            // console.log(res);
-            location.reload();
+
+        if (user.pw != user.pw2) {
+            alert("密碼錯誤");
+            return;
+        }
+
+        $.get('./api/chk_acc.php', {
+            'acc': user.acc
+        }, (chk) => {
+            // console.log(chk);
+            if (parseInt(chk)) {
+                alert("帳號重複");
+                return;
+            }
+            $.post("./api/reg.php", user, (res) => {
+                // console.log(res);
+                location.reload();
+            })
         })
-    })
     }
 </script>
