@@ -4,7 +4,6 @@
 <?php
 $user = $Mem->find($_GET['id']);
 ?>
-<!-- form:post>(table.all>tr*6>td.tt.ct+td.pp>input:text)+(.ct>input:hidden+input:submit+input:reset+input:button) -->
 <form action="api/regs.php" method="post">
     <table class="all">
         <tr>

@@ -3,7 +3,6 @@
 $row = $Admin->find($_GET['id']);
 $row_pr = unserialize($row['pr']);
 ?>
-<!-- h2.ct+form:post>(table.all>tr*3>td.tt.ct+td.pp>input)+.ct>input:submit+input:reset -->
 <h2 class="ct">修改管理員權限</h2>
 <form action="api/save_admin.php" method="post">
     <table class="all">

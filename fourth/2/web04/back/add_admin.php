@@ -1,5 +1,5 @@
 <h2 class="ct">新增管理帳號</h2>
-<!-- form:post>(table.all>(tr*2>td.tt.ct+td.pp>input:text)+(tr>td.tt.ct+td.pp>div*5>input:checkbox)) -->
+<!-- form:post>table.all>tr*2>td.tt.ct+td.pp>input:text -->
 <form action="api/save_admin.php" method="post">
     <table class="all">
         <tr>
@@ -14,6 +14,7 @@
                 <input type="password" name="pw">
             </td>
         </tr>
+        <!-- tr>td.tt.ct+td.pp>div*5>input:checkbox -->
         <tr>
             <td class="tt ct">權限</td>
             <td class="pp">
