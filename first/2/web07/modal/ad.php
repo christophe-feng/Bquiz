@@ -1,5 +1,6 @@
 <div class="cent">新增動態文字廣告</div>
 <hr>
+<!-- form:post>table>tr*2>td*2 -->
 <form action="./api/insert.php?table=<?= $_GET['table']; ?>" method="post" enctype="multipart/form-data">
     <table style="width:70%;margin:auto">
         <tr>
@@ -8,6 +9,7 @@
         </tr>
         <tr>
             <td>
+                <!-- input:submit+input:reset -->
                 <input type="submit" value="新增">
                 <input type="reset" value="重置">
             </td>
