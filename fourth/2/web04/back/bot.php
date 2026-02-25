@@ -1,4 +1,5 @@
 <h2 class="ct">編輯頁尾版權區</h2>
+<!-- form:post>table.all>tr>td.tt.ct+td.pp>input:text -->
 <form action="api/bot.php" method="post">
     <table class="all">
         <tr>
@@ -8,6 +9,7 @@
             </td>
         </tr>
     </table>
+    <!-- .ct>input:hidden+input:submit+input:reset -->
     <div class="ct">
         <input type="hidden" name="id" value="<?= $Bot->find(1)['id']; ?>">
         <input type="submit" value="編輯">

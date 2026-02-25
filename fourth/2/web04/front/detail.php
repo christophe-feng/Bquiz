@@ -3,7 +3,7 @@ $row = $Item->find($_GET['id']);
 ?>
 
 <h2 class="ct"><?= $row['name']; ?></h2>
-
+<!-- .pp.all>(.pp.ct>a>img)+(div>.pp*5) -->
 <div class="pp all" style="display: flex;margin:2px auto">
     <div class="pp ct" style="width:60%;padding:10px;border:1px soild white">
         <a href="?do=detail&id=<?= $row['id']; ?>">

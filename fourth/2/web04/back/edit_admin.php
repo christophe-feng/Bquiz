@@ -1,6 +1,7 @@
+<!-- 可以從add_admin複製過來做修改 -->
 <?php
-$row=$Admin->find($_GET['id']);
-$row_pr=unserialize($row['pr']);
+$row = $Admin->find($_GET['id']);
+$row_pr = unserialize($row['pr']);
 ?>
 <!-- h2.ct+form:post>(table.all>tr*3>td.tt.ct+td.pp>input)+.ct>input:submit+input:reset -->
 <h2 class="ct">修改管理員權限</h2>
@@ -21,15 +22,16 @@ $row_pr=unserialize($row['pr']);
         <tr>
             <td class="tt ct">權限</td>
             <td class="pp">
-                <div><input type="checkbox" name="pr[]" value="1" <?= (in_array(1,$row_pr)?"checked":""); ?>>商品分類與管理</div>
-                <div><input type="checkbox" name="pr[]" value="2" <?= (in_array(2,$row_pr)?"checked":""); ?>>訂單管理</div>
-                <div><input type="checkbox" name="pr[]" value="3" <?= (in_array(3,$row_pr)?"checked":""); ?>>會員管理</div>
-                <div><input type="checkbox" name="pr[]" value="4" <?= (in_array(4,$row_pr)?"checked":""); ?>>頁尾版權管理</div>
-                <div><input type="checkbox" name="pr[]" value="5" <?= (in_array(5,$row_pr)?"checked":""); ?>>最新消息管理</div>
+                <div><input type="checkbox" name="pr[]" value="1" <?= (in_array(1, $row_pr) ? "checked" : ""); ?>>商品分類與管理</div>
+                <div><input type="checkbox" name="pr[]" value="2" <?= (in_array(2, $row_pr) ? "checked" : ""); ?>>訂單管理</div>
+                <div><input type="checkbox" name="pr[]" value="3" <?= (in_array(3, $row_pr) ? "checked" : ""); ?>>會員管理</div>
+                <div><input type="checkbox" name="pr[]" value="4" <?= (in_array(4, $row_pr) ? "checked" : ""); ?>>頁尾版權管理</div>
+                <div><input type="checkbox" name="pr[]" value="5" <?= (in_array(5, $row_pr) ? "checked" : ""); ?>>最新消息管理</div>
             </td>
         </tr>
     </table>
     <div class="ct">
+        <!-- 要新增input:hidden以利將id傳送至後端做處理 -->
         <input type="hidden" name="id" value="<?= $row['id']; ?>">
         <input type="submit" value="修改">
         <input type="reset" value="重置">

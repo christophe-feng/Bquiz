@@ -1,7 +1,7 @@
 <h2 class="ct">填寫資料</h2>
 <form action="api/save_order.php" method="post">
     <?php
-    $user=$Mem->find(['acc'=>$_SESSION['mem']]);
+    $user = $Mem->find(['acc' => $_SESSION['mem']]);
     ?>
     <!-- table.all>tr*5>td.tt.ct+td.pp>input:text -->
     <table class="all">
@@ -56,6 +56,7 @@
     <div class="all tt ct">
         總價：<?= $sum; ?>
     </div>
+    <!-- 要新增input:hidden以利將id傳送至後端做處理 -->
     <input type="hidden" name="sum" value="<?= $sum; ?>">
     <!-- .ct>input:submit+input:button -->
     <div class="ct">

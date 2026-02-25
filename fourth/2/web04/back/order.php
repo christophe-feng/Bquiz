@@ -1,5 +1,4 @@
 <!-- 可以從mem複製過來後做修改 -->
-<!-- h2.ct+table.all>(tr>td.tt.ct*4)+(tr>td.pp.ct*3+td.pp.ct>button*2) -->
 <h2 class="ct">訂單管理</h2>
 <table class="all">
     <tr>

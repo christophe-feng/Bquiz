@@ -1,5 +1,5 @@
-<!-- h2.ct+table.all>(tr>td.tt.ct*4)+(tr>td.pp.ct*3+td.pp.ct>button*2) -->
 <h2 class="ct">會員管理</h2>
+<!-- table.all>(tr>td.tt.ct*4)+(tr>td.pp.ct*4) -->
 <table class="all">
     <tr>
         <td class="tt ct">姓名</td>
@@ -8,32 +8,36 @@
         <td class="tt ct">操作</td>
     </tr>
     <?php
-    $rows=$Mem->all();
-    foreach($rows as $row):
-        ?>
-    <tr>
-        <td class="pp ct"><?= $row['name']; ?></td>
-        <td class="pp ct"><?= $row['acc']; ?></td>
-        <td class="pp ct"><?= str_replace("-","/",$row['reg_date']); ?></td>
-        <td class="pp ct">
-            <button class="edit-btn" data-id="<?= $row['id']; ?>">修改</button>
-            <button class="del-btn" data-id="<?= $row['id']; ?>">刪除</button>
-        </td>
-    </tr>
+    $rows = $Mem->all();
+    foreach ($rows as $row):
+    ?>
+        <tr>
+            <td class="pp ct"><?= $row['name']; ?></td>
+            <td class="pp ct"><?= $row['acc']; ?></td>
+            <td class="pp ct"><?= str_replace("-", "/", $row['reg_date']); ?></td>
+            <td class="pp ct">
+                <!-- button.edit-btn+button.del-btn -->
+                <button class="edit-btn" data-id="<?= $row['id']; ?>">修改</button>
+                <button class="del-btn" data-id="<?= $row['id']; ?>">刪除</button>
+            </td>
+        </tr>
     <?php
     endforeach;
     ?>
 </table>
 
 <script>
-    $(".del-btn").on("click",function(){
-        let id=$(this).data('id');
-        $.post('api/del.php',{id,table:'Mem'},()=>{
+    $(".del-btn").on("click", function() {
+        let id = $(this).data('id');
+        $.post('api/del.php', {
+            id,
+            table: 'Mem'
+        }, () => {
             location.reload()
         })
     })
-    $(".edit-btn").on("click",function(){
-        let id=$(this).data('id');
-        location.href=`?do=edit_mem&id=${id}`;
+    $(".edit-btn").on("click", function() {
+        let id = $(this).data('id');
+        location.href = `?do=edit_mem&id=${id}`;
     })
 </script>
