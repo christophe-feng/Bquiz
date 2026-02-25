@@ -1,4 +1,5 @@
 <h2 class="ct">會員註冊</h2>
+<!-- table.all>tr*6>td.tt.ct+td.pp>input:text -->
 <table class="all">
     <tr>
         <td class="tt ct">姓名</td>
@@ -38,6 +39,7 @@
         </td>
     </tr>
 </table>
+<!-- .ct>input:button+input:reset -->
 <div class="ct">
     <input type="button" value="註冊" onclick="regs()">
     <input type="reset" value="重置">
