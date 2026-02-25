@@ -14,7 +14,7 @@ if (empty($_SESSION['buycart'])) {
 } else {
 ?>
     <h2 class="ct"><?= $_SESSION['mem']; ?>的購物車</h2>
-    <!-- table.all>(tr.tt.ct>td*7)+(tr.pp.ct>td*6+td>img) -->
+    <!-- table.all>(tr.tt.ct>td*7)+(tr.pp.ct>td*6+td>a>img) -->
     <table class="all">
         <tr class="tt ct">
             <td>編號</td>
@@ -46,6 +46,7 @@ if (empty($_SESSION['buycart'])) {
         endforeach;
         ?>
     </table>
+    <!-- .ct>img*2 -->
     <div class="ct">
         <img src="icon/0411.jpg" onclick="location.href='index.php'">
         <img src="icon/0412.jpg" onclick="location.href='?do=checkout'">

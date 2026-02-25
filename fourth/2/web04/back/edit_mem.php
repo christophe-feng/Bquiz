@@ -1,6 +1,8 @@
+<!-- 可以從front的regs複製過來再做修改 -->
+<!-- 順序和regs的不同，要做調整：帳號→密碼→姓名→電子信箱→地址→電話 -->
 <h2 class="ct">編輯會員資料</h2>
 <?php
-$user=$Mem->find($_GET['id']);
+$user = $Mem->find($_GET['id']);
 ?>
 <!-- form:post>(table.all>tr*6>td.tt.ct+td.pp>input:text)+(.ct>input:hidden+input:submit+input:reset+input:button) -->
 <form action="api/regs.php" method="post">
@@ -43,6 +45,7 @@ $user=$Mem->find($_GET['id']);
         </tr>
     </table>
     <div class="ct">
+        <!-- 要新增input:hidden以利將id傳送至後端做處理 -->
         <input type="hidden" name="id" value="<?= $user['id']; ?>">
         <input type="submit" value="編輯">
         <input type="reset" value="重置">

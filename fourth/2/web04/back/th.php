@@ -45,7 +45,6 @@
 <h2 class="ct">商品管理</h2>
 <!-- table.all>(tr.ct.tt>td*5)+(tr.ct.pp>td*5) -->
 <table class="all">
-
     <tr class="ct tt">
         <td>編號</td>
         <td>商品名稱</td>

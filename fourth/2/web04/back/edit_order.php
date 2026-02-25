@@ -1,4 +1,4 @@
-<!-- 可以從back裡的checkout複製過來後再做修改 -->
+<!-- 可以從front裡的checkout複製過來後再做修改 -->
 <?php
 $order = $Order->find($_GET['id']);
 ?>

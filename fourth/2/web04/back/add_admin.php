@@ -1,5 +1,5 @@
-<!-- h2.ct+form:post>(table.all>tr*3>td.tt.ct+td.pp>input)+.ct>input:submit+input:reset -->
 <h2 class="ct">新增管理帳號</h2>
+<!-- form:post>(table.all>(tr*2>td.tt.ct+td.pp>input:text)+(tr>td.tt.ct+td.pp>div*5>input:checkbox)) -->
 <form action="api/save_admin.php" method="post">
     <table class="all">
         <tr>
@@ -25,6 +25,7 @@
             </td>
         </tr>
     </table>
+    <!-- .ct>input:submit+input:reset -->
     <div class="ct">
         <input type="submit" value="新增">
         <input type="reset" value="重置">

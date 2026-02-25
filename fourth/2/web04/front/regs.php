@@ -44,33 +44,37 @@
 </div>
 
 <script>
-    function chkAcc(){
-        let acc=$("#acc").val();
-        $.get("api/chk_acc.php",{acc},(res)=>{
-            if(parseInt(res) || acc=='admin'){
+    function chkAcc() {
+        let acc = $("#acc").val();
+        $.get("api/chk_acc.php", {
+            acc
+        }, (res) => {
+            if (parseInt(res) || acc == 'admin') {
                 alert("此帳號已存在，請重設其他帳號")
-            }else{
+            } else {
                 alert("此帳號可使用")
             }
         })
     }
 
-    function regs(){
-        let data={
-            acc:$("#acc").val(),
-            pw:$("#pw").val(),
-            name:$("#name").val(),
-            tel:$("#tel").val(),
-            address:$("#address").val(),
-            email:$("#email").val()
+    function regs() {
+        let data = {
+            acc: $("#acc").val(),
+            pw: $("#pw").val(),
+            name: $("#name").val(),
+            tel: $("#tel").val(),
+            address: $("#address").val(),
+            email: $("#email").val()
         }
-        $.get("api/chk_acc.php",{acc:data.acc},(res)=>{
-            if(parseInt(res) || acc=='admin'){
+        $.get("api/chk_acc.php", {
+            acc: data.acc
+        }, (res) => {
+            if (parseInt(res) || acc == 'admin') {
                 alert("此帳號已存在，請重設其他帳號")
                 $("#acc").val("");
-            }else{
-                $.post("api/regs.php",data,()=>{
-                    location.href='index.php?do=login';
+            } else {
+                $.post("api/regs.php", data, () => {
+                    location.href = 'index.php?do=login';
                 })
             }
         })

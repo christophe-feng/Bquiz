@@ -1,3 +1,4 @@
+<!-- 可以從login複製過來再做修改 -->
 <h2>管理登入</h2>
 <table class="all">
     <tr>

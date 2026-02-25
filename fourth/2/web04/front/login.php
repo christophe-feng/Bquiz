@@ -1,9 +1,11 @@
 <h2>第一次購物</h2>
+<!-- a>img -->
 <a href="?do=regs">
     <img src="icon/0413.jpg" alt="">
 </a>
 
 <h2>會員登入</h2>
+<!-- table.all>tr*3>td.tt.ct+td.pp>input:text -->
 <table class="all">
     <tr>
         <td class="tt ct">帳號</td>
@@ -30,6 +32,7 @@
         </td>
     </tr>
 </table>
+<!-- .ct>input:button -->
 <div class="ct">
     <input type="button" value="確認" onclick="login()">
 </div>

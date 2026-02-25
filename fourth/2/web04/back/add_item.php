@@ -1,6 +1,6 @@
 <h2 class="ct">新增商品</h2>
+<!-- form:post>table.all>tr*9>td.ct.tt+td.pp>input:text -->
 <form action="api/save_item.php" method="post" enctype="multipart/form-data">
-    <!-- table.all>tr*9>td.ct.tt+td.pp>input:text -->
     <table class="all">
         <tr>
             <td class="ct tt">所屬大分類</td>
@@ -45,6 +45,7 @@
             </td>
         </tr>
     </table>
+    <!-- .ct>input:submit+input:reset+input:button -->
     <div class="ct">
         <input type="submit" value="新增">
         <input type="reset" value="重置">
@@ -55,7 +56,7 @@
 <script>
     getTypes('big')
 
-    $("#big").on("change",function(){
+    $("#big").on("change", function() {
         getTypes('mid');
     })
 
