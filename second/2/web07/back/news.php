@@ -1,3 +1,4 @@
+<!-- form:post>table.ct>tr*2>td*4 -->
 <form action="./api/post.php" method="post">
     <table class="ct" style="width: 80%;margin:auto;">
         <tr>
