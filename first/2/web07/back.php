@@ -2,7 +2,7 @@
 include_once "./api/db.php";
 
 if (!isset($_SESSION['admin'])) {
-	to("login.php");
+	to("index.php");
 	exit();
 }
 
@@ -128,7 +128,7 @@ if (!isset($_SESSION['admin'])) {
 				<?php
 				$bottom = $Bottom->find(1);
 				echo $bottom['bottom'];
-				?>
+				?>				
 			</span>
 		</div>
 	</div>
