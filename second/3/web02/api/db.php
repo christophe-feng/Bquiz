@@ -139,7 +139,7 @@ function dd($array)
 }
 
 $Total = new DB('total');
-$Mem = new DB('member');
+$Mem = new DB('members');
 $Post = new DB('post');
 $Que = new DB('que');
 $Log = new DB('log');
