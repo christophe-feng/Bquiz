@@ -146,7 +146,7 @@ $Log = new DB('log');
 
 //很不熟，需要搞清楚邏輯
 if (!isset($_SESSION['total'])) {
-    $totay = $Total->find(['date' => date("Y-m-d")]);
+    $today = $Total->find(['date' => date("Y-m-d")]);
     if (empty($today)) {
         $Total->save(['date' => date("Y-m-d"), 'total' => 1]);
     } else {

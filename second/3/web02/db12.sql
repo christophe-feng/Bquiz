@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2026-03-02 16:02:11
+-- 產生時間： 2026-03-03 09:29:34
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -42,7 +42,9 @@ INSERT INTO `members` (`id`, `acc`, `pw`, `email`) VALUES
 (1, 'admin', '1234', 'admin@labor.gov.tw'),
 (2, 'test', '5678', 'test@labor.gov.tw'),
 (3, 'mem01', 'mem01', 'mem01@labor.gov.tw'),
-(4, 'mem02', 'mem02', 'mem02@labor.gov.tw');
+(4, 'mem02', 'mem02', 'mem02@labor.gov.tw'),
+(5, 'happy', 'happy', 'happy@happy.com'),
+(6, 'hello', 'hello', 'hello@hello.com');
 
 -- --------------------------------------------------------
 
@@ -61,8 +63,7 @@ CREATE TABLE `total` (
 --
 
 INSERT INTO `total` (`id`, `total`, `date`) VALUES
-(1, '1', '2026-03-02'),
-(2, '1', '2026-03-02');
+(1, '1', '2026-03-03');
 
 --
 -- 已傾印資料表的索引
@@ -88,13 +89,13 @@ ALTER TABLE `total`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `total`
 --
 ALTER TABLE `total`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
