@@ -20,7 +20,7 @@
 	<div id="all">
 		<div id="title">
 			<?= date(" m 月 d 日 l"); ?> |
-			今日瀏覽: <?= $Total->find(['date'=>date("Y-m-d")])['total']; ?> |
+			今日瀏覽: <?= $Total->find(['date' => date("Y-m-d")])['total']; ?> |
 			累積瀏覽: <?= $Total->sum('total'); ?>
 			<a href="index.php" style="float: right;">回首頁</a>
 		</div>
@@ -31,25 +31,37 @@
 		</div>
 		<div id="mm">
 			<div class="hal" id="lef">
+				<a class="blo" href="?do=admin">帳號管理</a>
 				<a class="blo" href="?do=po">分類網誌</a>
-				<a class="blo" href="?do=news">最新文章</a>
-				<a class="blo" href="?do=pop">人氣文章</a>
-				<a class="blo" href="?do=know">講座訊息</a>
-				<a class="blo" href="?do=que">問卷調查</a>
+				<a class="blo" href="?do=news">最新文章管理</a>
+				<a class="blo" href="?do=know">講座管理</a>
+				<a class="blo" href="?do=que">問卷管理</a>
 			</div>
 			<div class="hal" id="main">
 				<div>
-
+					<marquee style="width:80%; display:inline-block;">
+						請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地！詳見最新文章
+					</marquee>
 					<span style="width:18%; display:inline-block;">
-						<a href="?do=login">會員登入</a>
+						<?php if (isset($_SESSION['login'])): ?>
+							歡迎，<?= $_SESSION['login']; ?><br>
+							<?php if ($_SESSION['login'] == 'admin'): ?>
+								<input type="button" value="管理" onclick="location.href='back.php'">
+								<input type="button" value="登出" onclick="location.href='logout.php'">
+							<?php else: ?>
+								<input type="button" value="登出" onclick="location.href='logout.php'">
+							<?php endif; ?>
+						<?php else: ?>
+							<a href="?do=login">會員登入</a>
+						<?php endif; ?>
 					</span>
 					<div class="">
 						<?php
-						$do=$_GET['do']??'main';
-						$file="./back/".$do.".php";
-						if(file_exists($file)){
+						$do = $_GET['do'] ?? 'main';
+						$file = "./back/" . $do . ".php";
+						if (file_exists($file)) {
 							include $file;
-						}else{
+						} else {
 							include "./back/main.php";
 						}
 						?>

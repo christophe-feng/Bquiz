@@ -1,6 +1,6 @@
 <fieldset>
     <legend>會員註冊</legend>
-    <div style="color: red;">*請輸入您要註冊的帳號及密碼（最長12個字元）</div>
+    <div style="color: red;">*請設定您要註冊的帳號及密碼（最長12個字元）</div>
     <form action="./api/reg.php" method="post">
         <table>
             <tr>
