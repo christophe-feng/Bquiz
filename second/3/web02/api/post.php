@@ -1,6 +1,7 @@
 <?php
 include_once "db.php";
 
+// 還不熟悉
 foreach($_POST['id'] as $id){
     if(!empty($_POST['id']) && in_array($id,$_POST['id'])){
         $Post->del($id);
