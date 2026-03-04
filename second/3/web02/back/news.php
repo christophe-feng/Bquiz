@@ -7,26 +7,51 @@
             <td>刪除</td>
         </tr>
         <?php
-        $rows=$Post->all();
-        foreach($rows as $row):
+        // 分頁邏輯
+        $total = $Post->count();
+        $div = 3;
+        $pages = ceil($total / $div);
+        $now = $_GET['p'] ?? 1;
+        $start = ($now - 1) * $div;
+
+        $rows = $Post->all(" limit $start,$div");   //邏輯要理解
+        foreach ($rows as $idx => $row):
         ?>
-        <tr>
-            <td class="clo"></td>
-            <td><?= $row['title']; ?></td>
-            <td>
-                <input type="checkbox" name="sh[]" value="<?= $row['id']; ?>" <?= ($row['sh']==1)?'checked':''; ?>>
-            </td>
-            <td>
-                <input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
-                <!-- 要放入隱藏的id以利將資料送到後端做處理 -->
-                <input type="hidden" name="id[]" value="<?= $row['id']; ?>">
-            </td>
-        </tr>
+            <tr>
+                <td class="clo"><?= $idx+1+$start ?></td>   <!-- 邏輯要理解 -->
+                <td><?= $row['title']; ?></td>
+                <td>
+                    <input type="checkbox" name="sh[]" value="<?= $row['id']; ?>" <?= ($row['sh'] == 1) ? 'checked' : ''; ?>>
+                </td>
+                <td>
+                    <input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
+                    <!-- 要放入隱藏的id以利將資料送到後端做處理 -->
+                    <input type="hidden" name="id[]" value="<?= $row['id']; ?>">
+                </td>
+            </tr>
         <?php
         endforeach;
         ?>
     </table>
     <div class="ct">
+        <!-- 還很不熟悉 -->
+        <?php
+        if ($now - 1 > 0) {
+            $prev = $now - 1;
+            echo "<a href='?do=news&p=$prev'> < </a>";
+        }
+
+        for ($i = 1; $i <= $pages; $i++) {
+            $font = ($i == $now) ? "24px" : "16px";
+            echo "<a href='?do=news&p=$i' style='font-size:$font'> $i </a>";
+        }
+
+        if ($now + 1 <= $pages) {
+            $next = $now + 1;
+            echo "<a href='?do=news&p=$next'> > </a>";
+        }
+        ?>
+
         <!-- 用submit即可 -->
         <input type="submit" value="確定修改">
     </div>
