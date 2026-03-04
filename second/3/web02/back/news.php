@@ -1,4 +1,4 @@
-<form action="" method="post">
+<form action="./api/post.php" method="post">
     <table class="ct" style="margin:auto;width:80%">
         <tr>
             <td style="width:10%;">編號</td>
