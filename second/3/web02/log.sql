@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2026-03-05 09:25:53
+-- 產生時間： 2026-03-05 09:25:29
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -24,32 +24,23 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `total`
+-- 資料表結構 `log`
 --
 
-CREATE TABLE `total` (
+CREATE TABLE `log` (
   `id` int(10) UNSIGNED NOT NULL,
-  `total` text NOT NULL,
-  `date` date NOT NULL
+  `post_id` int(10) UNSIGNED NOT NULL,
+  `member_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- 傾印資料表的資料 `total`
---
-
-INSERT INTO `total` (`id`, `total`, `date`) VALUES
-(1, '1', '2026-03-03'),
-(2, '1', '2026-03-04'),
-(3, '1', '2026-03-05');
 
 --
 -- 已傾印資料表的索引
 --
 
 --
--- 資料表索引 `total`
+-- 資料表索引 `log`
 --
-ALTER TABLE `total`
+ALTER TABLE `log`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -57,10 +48,10 @@ ALTER TABLE `total`
 --
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `total`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `log`
 --
-ALTER TABLE `total`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `log`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

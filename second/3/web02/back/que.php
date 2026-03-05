@@ -2,14 +2,15 @@
     <legend>新增問卷</legend>
     <form action="./api/add_que.php" method="post">
         <!-- 版面配置主要用div -->
+        <!-- input裡面的id要拿掉 -->
         <div>
             <label for="">問卷名稱</label>
-            <input type="text" name="subject" id="">
+            <input type="text" name="subject">
         </div>
         <div id="options">
             <div>
                 <label for="">選項</label>
-                <input type="text" name="opt[]" id="">
+                <input type="text" name="opt[]">
                 <input type="button" value="更多" onclick="more()">
             </div>
         </div>
@@ -23,7 +24,7 @@
     function more() {
         let opt = `<div>
                 <label for="">選項</label>
-                <input type="text" name="opt[]" id="">
+                <input type="text" name="opt[]">
                   </div>`
         $("#options").prepend(opt);
     }
