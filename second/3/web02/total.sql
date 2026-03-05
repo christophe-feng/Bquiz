@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2026-03-03 19:20:13
+-- 產生時間： 2026-03-05 09:25:53
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -38,7 +38,9 @@ CREATE TABLE `total` (
 --
 
 INSERT INTO `total` (`id`, `total`, `date`) VALUES
-(1, '1', '2026-03-03');
+(1, '1', '2026-03-03'),
+(2, '1', '2026-03-04'),
+(3, '1', '2026-03-05');
 
 --
 -- 已傾印資料表的索引
@@ -58,7 +60,7 @@ ALTER TABLE `total`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `total`
 --
 ALTER TABLE `total`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
