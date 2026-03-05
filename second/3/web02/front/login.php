@@ -39,14 +39,16 @@
         // 非同步執行
         // 檢察帳號
         $.get("api/chk_acc.php", user, (chkacc) => {
-            if (!parseInt(chkacc)) {
+            // if (!parseInt(chkacc)) {
+            if (chkacc==0) {
                 alert("查無帳號");
                 return;
             }
 
             // 檢查密碼
             $.get("api/chk_pw.php", user, (chkpw) => {
-                if (!parseInt(chkpw)) {
+                // if (!parseInt(chkpw)) {
+                if (chkpw==0) {
                     alert("密碼錯誤");
                     return;
                 }
