@@ -32,13 +32,13 @@
                 <td>
                     <?php
                     if (isset($_SESSION['login'])) {
-                        $post_id = $post['id'];
+                        $post_id = $row['id'];
                         $member_id = $Mem->find(['acc' => $_SESSION['login']])['id'];
                         if ($Log->count(['post_id' => $post_id, 'member_id' => $member_id]) > 0):
                     ?>
-                            <a href="#" class="great" data-id="<?= $post['id']; ?>">收回讚</a>
+                            <a href="#" class="great" data-id="<?= $row['id']; ?>">收回讚</a>
                         <?php else: ?>
-                            <a href="#" class="great" data-id="<?= $post['id']; ?>">讚</a>
+                            <a href="#" class="great" data-id="<?= $row['id']; ?>">讚</a>
                     <?php
                         endif;
                     }
