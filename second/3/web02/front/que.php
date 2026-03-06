@@ -11,20 +11,20 @@
             <td>狀態</td>
         </tr>
         <?php
-        $rows=$Que->all(['main_id'=>0]);
-        foreach($rows as $idx => $row):
+        $ques=$Que->all(['main_id'=>0]);
+        foreach($ques as $idx => $que):
             ?>
         <tr>
             <td><?= $idx+1; ?></td>
-            <td><?= $row['text']; ?></td>
-            <td><?= $row['vote']; ?></td>
+            <td  style="text-align: left;"><?= $que['text']; ?></td>
+            <td><?= $que['vote']; ?></td>
             <td>
-                <a href="?do=result&id=<?= $row['id']; ?>">結果</a>
+                <a href="?do=result&id=<?= $que['id']; ?>">結果</a>
             </td>
             <td>
                 <?php
                 if(isset($_SESSION['login'])){
-                    echo "<a href='?do=vote&id={$row['id']}'>參與投票</a>";
+                    echo "<a href='?do=vote&id={$que['id']}'>參與投票</a>";
                 }else{
                     echo "請先登入";
                 }

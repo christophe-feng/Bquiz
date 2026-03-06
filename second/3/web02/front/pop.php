@@ -16,35 +16,37 @@
         $now = $_GET['p'] ?? 1;
         $start = ($now - 1) * $div;
 
-        $rows = $Post->all(['sh' => 1], " limit $start,$div");   //邏輯要理解
-        foreach ($rows as $row):
+        // 邏輯要理解
+        // 要記得用order by來排序
+        $posts = $Post->all(['sh' => 1], " order by `good` desc limit $start,$div");
+        foreach ($posts as $post):
         ?>
             <tr>
-                <td class="clo title"><?= $row['title']; ?></td>
+                <td class="clo title"><?= $post['title']; ?></td>
                 <td class="post">
                     <span class="short">
-                        <?= mb_substr($row['text'], 0, 25); ?>...
+                        <?= mb_substr($post['text'], 0, 25); ?>...
                     </span>
                     <span class="full" style="display: none;">
-                        <?= nl2br($row['text']); ?>
+                        <?= nl2br($post['text']); ?>
                     </span>
                 </td>
                 <td>
                     <?php
                     if (isset($_SESSION['login'])) {
-                        $post_id = $row['id'];
+                        $post_id = $post['id'];
                         $member_id = $Mem->find(['acc' => $_SESSION['login']])['id'];
                     ?>
                         <span class="num">
-                            <?= $Log->count(['post_id' => $row['id']]); ?>個人說
+                            <?= $Log->count(['post_id' => $post['id']]); ?>個人說
                         </span>
                         <div class="good"></div>
                         <?php
                         if ($Log->count(['post_id' => $post_id, 'member_id' => $member_id]) > 0):
                         ?>
-                            <a href="#" class="great" data-id="<?= $row['id']; ?>">收回讚</a>
+                            <a href="#" class="great" data-id="<?= $post['id']; ?>">收回讚</a>
                         <?php else: ?>
-                            <a href="#" class="great" data-id="<?= $row['id']; ?>">讚</a>
+                            <a href="#" class="great" data-id="<?= $post['id']; ?>">讚</a>
                     <?php
                         endif;
                     }
@@ -86,9 +88,9 @@
             $("#alert").hide();
         }
     )
-    
+
     // 邏輯還不清楚，需要再理解
-    $(".great").on(".click", function() {
+    $(".great").on("click", function() {
         let id = $(this).data('id');
         let str = $(this).text();
         let num = 0;
@@ -104,7 +106,6 @@
                     $(this).text("讚");
                     num = $(this).siblings('.num').text() * 1 - 1;
                     break;
-
             }
             $(this).siblings('.num').text(num);
         })

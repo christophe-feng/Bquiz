@@ -10,35 +10,35 @@
         </tr>
         <?php
         // 分頁邏輯
-        $total = $Post->count();
+        $total = $Post->count(['sh'=>1]);
         $div = 5;
         $pages = ceil($total / $div);
         $now = $_GET['p'] ?? 1;
         $start = ($now - 1) * $div;
 
-        $rows = $Post->all(['sh' => 1], " limit $start,$div");   //邏輯要理解
-        foreach ($rows as $row):
+        $posts = $Post->all(['sh' => 1], " limit $start,$div");   //邏輯要理解
+        foreach ($posts as $post):
         ?>
             <tr>
-                <td class="clo title"><?= $row['title']; ?></td>
+                <td class="clo title"><?= $post['title']; ?></td>
                 <td class="post">
                     <span class="short">
-                        <?= mb_substr($row['text'], 0, 25); ?>...
+                        <?= mb_substr($post['text'], 0, 25); ?>...
                     </span>
                     <span class="full" style="display: none;">
-                        <?= nl2br($row['text']); ?>
+                        <?= nl2br($post['text']); ?>
                     </span>
                 </td>
                 <td>
                     <?php
                     if (isset($_SESSION['login'])) {
-                        $post_id = $row['id'];
+                        $post_id = $post['id'];
                         $member_id = $Mem->find(['acc' => $_SESSION['login']])['id'];
                         if ($Log->count(['post_id' => $post_id, 'member_id' => $member_id]) > 0):
                     ?>
-                            <a href="#" class="great" data-id="<?= $row['id']; ?>">收回讚</a>
+                            <a href="#" class="great" data-id="<?= $post['id']; ?>">收回讚</a>
                         <?php else: ?>
-                            <a href="#" class="great" data-id="<?= $row['id']; ?>">讚</a>
+                            <a href="#" class="great" data-id="<?= $post['id']; ?>">讚</a>
                     <?php
                         endif;
                     }
@@ -75,7 +75,7 @@
         $(this).next().children('.short,.full').toggle();
     })
 
-    $(".great").on(".click",function(){
+    $(".great").on("click",function(){
         let id=$(this).data('id');
         let str=$(this).text();
         $.post("./api/good.php",{id},()=>{

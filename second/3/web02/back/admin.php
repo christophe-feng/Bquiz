@@ -9,17 +9,17 @@
             </tr>
             <?php
             // all()裡面不需要放任何參數或變數
-            $rows = $Mem->all();
-            foreach ($rows as $row):
-                if ($row['acc'] != 'admin'):
+            $members = $Mem->all();
+            foreach ($members as $member):
+                if ($member['acc'] != 'admin'):
             ?>
                     <tr>
-                        <td><?= $row['acc']; ?></td>
+                        <td><?= $member['acc']; ?></td>
                         <!-- 用str_repeat將密碼用*替代 -->
                         <!-- 用mb_strlen計算字元長度 -->
-                        <td><?= str_repeat("*", mb_strlen($row['pw'])); ?></td>
+                        <td><?= str_repeat("*", mb_strlen($member['pw'])); ?></td>
                         <td>
-                            <input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
+                            <input type="checkbox" name="del[]" value="<?= $member['id']; ?>">
                         </td>
                     </tr>
             <?php
