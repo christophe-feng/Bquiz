@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2026-03-05 09:25:29
+-- 產生時間： 2026-03-06 09:34:11
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -34,6 +34,16 @@ CREATE TABLE `log` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- 傾印資料表的資料 `log`
+--
+
+INSERT INTO `log` (`id`, `post_id`, `member_id`) VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 4, 2),
+(4, 2, 2);
+
+--
 -- 已傾印資料表的索引
 --
 
@@ -51,7 +61,7 @@ ALTER TABLE `log`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -14,19 +14,19 @@
         $now = $_GET['p'] ?? 1;
         $start = ($now - 1) * $div;
 
-        $rows = $Post->all(" limit $start,$div");   //邏輯要理解
-        foreach ($rows as $idx => $row):
+        $posts = $Post->all(" limit $start,$div");   //邏輯要理解
+        foreach ($posts as $idx => $post):
         ?>
             <tr>
                 <td class="clo"><?= $idx+1+$start ?></td>   <!-- 邏輯要理解 -->
-                <td><?= $row['title']; ?></td>
+                <td><?= $post['title']; ?></td>
                 <td>
-                    <input type="checkbox" name="sh[]" value="<?= $row['id']; ?>" <?= ($row['sh'] == 1) ? 'checked' : ''; ?>>
+                    <input type="checkbox" name="sh[]" value="<?= $post['id']; ?>" <?= ($post['sh'] == 1) ? 'checked' : ''; ?>>
                 </td>
                 <td>
-                    <input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
+                    <input type="checkbox" name="del[]" value="<?= $post['id']; ?>">
                     <!-- 要放入隱藏的id以利將資料送到後端做處理 -->
-                    <input type="hidden" name="id[]" value="<?= $row['id']; ?>">
+                    <input type="hidden" name="id[]" value="<?= $post['id']; ?>">
                 </td>
             </tr>
         <?php
