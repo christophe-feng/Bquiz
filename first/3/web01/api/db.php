@@ -60,7 +60,7 @@ class DB
     }
 
     function del($id){
-        $sql=" DELECT FROM `$this->table` ";
+        $sql=" DELETE FROM `$this->table` ";
         if(is_array($id)){
             $where=$this->array2sql($id);
             $sql .=" WHERE " . join(" AND ",$where);
@@ -120,3 +120,6 @@ function to($url){
 // }
 
 $Title=new DB('title');
+$Ad=new DB('ad');
+$Mvim=new DB('mvim');
+$Image=new DB('image');
