@@ -1,3 +1,4 @@
+<!-- 還不熟悉 -->
 <?php
 include_once "db.php";
 

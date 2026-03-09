@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2026-03-09 09:12:04
+-- 產生時間： 2026-03-09 09:11:51
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -24,33 +24,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `mvim`
+-- 資料表結構 `bottom`
 --
 
-CREATE TABLE `mvim` (
+CREATE TABLE `bottom` (
   `id` int(10) UNSIGNED NOT NULL,
-  `img` text NOT NULL,
-  `sh` int(1) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `bottom` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- 傾印資料表的資料 `mvim`
+-- 傾印資料表的資料 `bottom`
 --
 
-INSERT INTO `mvim` (`id`, `img`, `sh`) VALUES
-(1, '01C01.gif', 1),
-(2, '01C02.gif', 1),
-(3, '01C03.gif', 1),
-(5, '01C04.gif', 1);
+INSERT INTO `bottom` (`id`, `bottom`) VALUES
+(1, '頁尾版權');
 
 --
 -- 已傾印資料表的索引
 --
 
 --
--- 資料表索引 `mvim`
+-- 資料表索引 `bottom`
 --
-ALTER TABLE `mvim`
+ALTER TABLE `bottom`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -58,10 +54,10 @@ ALTER TABLE `mvim`
 --
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `mvim`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `bottom`
 --
-ALTER TABLE `mvim`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `bottom`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
