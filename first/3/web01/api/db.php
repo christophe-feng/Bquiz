@@ -83,7 +83,7 @@ class DB
             $sql=" UPDATE $this->table";
             $set= $this->array2sql($array);
             $sql .=" SET " . join(", ",$set);
-            $sql .=" WHERE `id`='{$array['id']}'";
+            $sql .=" WHERE id='{$array['id']}'";
             }else{
             $sql=" INSERT INTO `{$this->table}` ";
             $keys=array_keys($array);
@@ -123,3 +123,7 @@ $Title=new DB('title');
 $Ad=new DB('ad');
 $Mvim=new DB('mvim');
 $Image=new DB('image');
+$Total=new DB('total');
+$Bottom=new DB('bottom');
+$News=new DB('news');
+$Admin=new DB('admin');

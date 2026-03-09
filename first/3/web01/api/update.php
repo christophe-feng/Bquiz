@@ -1,3 +1,4 @@
+<!-- 用在title / mvim / image -->
 <?php
 include_once "db.php";
 
