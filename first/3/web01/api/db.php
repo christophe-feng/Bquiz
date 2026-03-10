@@ -112,12 +112,6 @@ function to($url){
     header("location:".$url);
 }
 
-// if(!isset($_SESSION['view'])){
-//     $_SESSION['view']=1;
-//     $total=$Total->find(1);
-//     $total['total']++;
-//     $Total->save($total);
-// }
 
 $Title=new DB('title');
 $Ad=new DB('ad');
@@ -128,3 +122,10 @@ $Bottom=new DB('bottom');
 $News=new DB('news');
 $Admin=new DB('admin');
 $Menu=new DB('menu');
+
+if(!isset($_SESSION['view'])){
+    $_SESSION['view']=1;
+    $total=$Total->find(1);
+    $total['total']++;
+    $Total->save($total);
+}
