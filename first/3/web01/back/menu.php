@@ -12,7 +12,7 @@
                     <td></td>
                 </tr>
                 <?php
-                $rows=$Menu->all();
+                $rows=$Menu->all(['main_id'=>0]);
                 foreach($rows as $row):
                 ?>
                 <tr>
@@ -23,16 +23,18 @@
                         <input type="text" name="href[<?= $row['id']; ?>]" value="<?= $row['href']; ?>">
                     </td>
                     <td width="5%">
-                        <?= $row['sub']; ?>
+                        <?= $row['main_id']; ?>
                     </td>
                     <td width="5%">
-                        <input type="checkbox" name="sh" value="<?= $row['id']; ?>" <?= ($row['sh']==1)?"checked":""; ?>> 
+                        <!-- sh要用陣列的型態傳送到後端 -->
+                        <input type="checkbox" name="sh[]" value="<?= $row['id']; ?>" <?= ($row['sh']==1)?"checked":""; ?>> 
                     </td>
                     <td width="5%">
                         <input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
                     </td>
                     <td>
-                        <input type="button" value="編輯次選單" onclick="op('#cover','#cvr','./modal/submenu.php')">
+                        <!-- 要記得將id帶過去 -->
+                        <input type="button" value="編輯次選單" onclick="op('#cover','#cvr','./modal/submenu.php?id=<?= $row['id']; ?>')">
                     </td>
                 </tr>
                 <?php

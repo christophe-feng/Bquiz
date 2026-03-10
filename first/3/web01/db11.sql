@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2026-03-09 09:11:33
+-- 產生時間： 2026-03-10 09:15:14
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -106,6 +106,29 @@ INSERT INTO `image` (`id`, `img`, `sh`) VALUES
 (6, '01D06.jpg', 1),
 (7, '01D07.jpg', 1),
 (8, '01D08.jpg', 0);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `menu`
+--
+
+CREATE TABLE `menu` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `text` text NOT NULL,
+  `href` text NOT NULL,
+  `main_id` int(10) UNSIGNED NOT NULL,
+  `sh` int(1) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `menu`
+--
+
+INSERT INTO `menu` (`id`, `text`, `href`, `main_id`, `sh`) VALUES
+(1, '管理登入', '?do=login', 0, 1),
+(2, '網站首頁', 'index.php', 0, 1),
+(5, '更多內容', 'index.php', 2, 0);
 
 -- --------------------------------------------------------
 
@@ -225,6 +248,12 @@ ALTER TABLE `image`
   ADD PRIMARY KEY (`id`);
 
 --
+-- 資料表索引 `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 資料表索引 `mvim`
 --
 ALTER TABLE `mvim`
@@ -275,6 +304,12 @@ ALTER TABLE `bottom`
 --
 ALTER TABLE `image`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `mvim`
