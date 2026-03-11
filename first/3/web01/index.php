@@ -24,7 +24,7 @@ include_once "./api/db.php";
 	<iframe style="display:none;" name="back" id="back"></iframe>
 	<div id="main">
 		<?php
-		$title=$Title->find(['sh'=>1]);
+		$title = $Title->find(['sh' => 1]);
 		?>
 		<a title="<?= $title['text']; ?>" href="index.php">
 			<div class="ti" style="background:url('upload/<?= $title['img']; ?>'); background-size:cover;"></div><!--標題-->
@@ -38,7 +38,7 @@ include_once "./api/db.php";
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
 					<span class="t">進站總人數 :
 						<?php
-						$row=$Total->find(1);
+						$row = $Total->find(1);
 						echo $row['total'];
 						?>
 					</span>
@@ -76,6 +76,22 @@ include_once "./api/db.php";
 				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo('?do=login')">管理登入</button>
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
+					<div class="btn" onclick="pp(1)">
+						<img src="icon/up.jpg" alt="">
+					</div>
+					<?php
+					$rows = $Image->all(['sh' => 1]);
+					foreach ($rows as $key => $img):
+					?>
+						<div class='im' id='ssaa<?= $key; ?>' style='display:none;text-align:center;margin:3px 0'>
+							<img src='upload/<?= $img['img']; ?>' style='width:150px;height:103px;border:3px solid orange;'>
+						</div>
+					<?php
+					endforeach;
+					?>
+					<div class="btn" onclick="pp(2)">
+						<img src="icon/dn.jpg" alt="">
+					</div>
 					<script>
 						var nowpage = 0,
 							num = 0;
@@ -85,7 +101,8 @@ include_once "./api/db.php";
 							if (x == 1 && nowpage - 1 >= 0) {
 								nowpage--;
 							}
-							if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {
+							// if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {   //錯的算式
+							if (x == 2 && (nowpage + 1) <= num * 1 + 3) {
 								nowpage++;
 							}
 							$(".im").hide()
@@ -103,7 +120,7 @@ include_once "./api/db.php";
 		<div style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
 			<span class="t" style="line-height:123px;">
 				<?php
-				$row=$Bottom->find(1);
+				$row = $Bottom->find(1);
 				echo $row['bottom'];
 				?>
 			</span>
