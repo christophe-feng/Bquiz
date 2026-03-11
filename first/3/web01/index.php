@@ -33,7 +33,27 @@ include_once "./api/db.php";
 			<div id="lf" style="float:left;">
 				<div id="menuput" class="dbor">
 					<!--主選單放此-->
+					<!-- 開始 -->
 					<span class="t botli">主選單區</span>
+					<?php
+					$rows=$Menu->all(['main_id'=>0,'sh'=>1]);
+					foreach($rows as $row):
+					?>
+					<div class="mainmu">
+						<a href="<?= $main['href']; ?>">
+							<?= $main['text']; ?>
+							<?php
+							if($Menu->count(['main_id'=>$main['id']])>0){
+								$subs=$Menu->all(['main_id'=>$main['id']])
+
+							}
+							?>
+							<div class="mw">
+
+							</div>
+						</a>
+					</div>
+					<!-- 結束 -->
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
 					<span class="t">進站總人數 :
@@ -76,7 +96,7 @@ include_once "./api/db.php";
 				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo('?do=login')">管理登入</button>
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
-					<div class="btn" onclick="pp(1)">
+					<div class="btn cent" onclick="pp(1)">
 						<img src="icon/up.jpg" alt="">
 					</div>
 					<?php
@@ -89,7 +109,7 @@ include_once "./api/db.php";
 					<?php
 					endforeach;
 					?>
-					<div class="btn" onclick="pp(2)">
+					<div class="btn cent" onclick="pp(2)">
 						<img src="icon/dn.jpg" alt="">
 					</div>
 					<script>
