@@ -36,23 +36,29 @@ include_once "./api/db.php";
 					<!-- 開始 -->
 					<span class="t botli">主選單區</span>
 					<?php
-					$rows=$Menu->all(['main_id'=>0,'sh'=>1]);
-					foreach($rows as $row):
+					$mains = $Menu->all(['main_id' => 0, 'sh' => 1]);
+					foreach ($mains as $main):
 					?>
-					<div class="mainmu">
-						<a href="<?= $main['href']; ?>">
-							<?= $main['text']; ?>
-							<?php
-							if($Menu->count(['main_id'=>$main['id']])>0){
-								$subs=$Menu->all(['main_id'=>$main['id']])
-
-							}
-							?>
-							<div class="mw">
-
-							</div>
-						</a>
-					</div>
+						<div class="mainmu">
+							<a href="<?= $main['href']; ?>">
+								<?= $main['text']; ?>
+								<?php if ($Menu->count(['main_id' => $main['id']]) > 0): ?>
+									<div class="mw">
+										<?php
+										$subs = $Menu->all(['main_id' => $main['id']]);
+										foreach ($subs as $sub):
+										?>
+											<div class="mainmu2">
+												<a href="<?= $sub['href']; ?>">
+													<?= $sub['text']; ?>
+												</a>
+											</div>
+										<?php endforeach; ?>
+									</div>
+								<?php endif; ?>
+							</a>
+						</div>
+					<?php endforeach; ?>
 					<!-- 結束 -->
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
