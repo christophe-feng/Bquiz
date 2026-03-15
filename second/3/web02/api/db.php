@@ -6,11 +6,11 @@ class DB
     protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db12";
     protected $pdo;
     protected $table;
-    public $type=[
-        1=>"健康新知",
-        2=>"菸害防治",
-        3=>"癌症防治",
-        4=>"慢性病防治"
+    public $type = [
+        1 => "健康新知",
+        2 => "菸害防治",
+        3 => "癌症防治",
+        4 => "慢性病防治"
     ];
 
     function __construct($table)
@@ -51,7 +51,6 @@ class DB
     function count(...$arg)
     {
         $sql = " SELECT count(*) FROM $this->table ";
-
         if (isset($arg[0])) {
             if (is_array($arg[0])) {
                 $where = $this->array2sql($arg[0]);
@@ -103,11 +102,19 @@ class DB
             $set = $this->array2sql($array);
             $sql .= " SET " . join(", ", $set);
             $sql .= " WHERE `id`='{$array['id']}'";
+            // } else {
+            //     $sql = " INSERT INTO `{$this->table}`";
+            //     $keys = array_keys($array);
+            //     $sql .= "(`" . join("`,`", $keys) . "`)";
+            //     $sql .= " VALUES ('" . join("','", $array) . "')";
+            // }
         } else {
-            $sql = " INSERT INTO `{$this->table}`";
-            $keys = array_keys($array);
-            $sql .= "(`" . join("`,`", $keys) . "`)";
-            $sql .= " VALUES ('" . join("','", $array) . "')";
+            // 1. 取得欄位名稱 (加上反引號避免保留字衝突)
+            $keys = "`" . join("`, `", array_keys($array)) . "`";
+            // 2. 取得值 (加上單引號)
+            $values = "'" . join("', '", array_values($array)) . "'";
+            // 3. 組合
+            $sql = "INSERT INTO `{$this->table}` ($keys) VALUES ($values)";
         }
         return $this->pdo->exec($sql);
     }
