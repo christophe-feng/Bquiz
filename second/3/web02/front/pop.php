@@ -82,10 +82,10 @@
     // 邏輯還不清楚，需要再理解
     $(".title").hover(
         function() {
-            $("#alert").html($(this).next().children('.full').html()).show()
+            $("#alerr").html($(this).next().children('.full').html()).show()
         },
         function() {
-            $("#alert").hide();
+            $("#alerr").hide();
         }
     )
 

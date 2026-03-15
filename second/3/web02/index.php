@@ -11,16 +11,16 @@
 	<script src="./js/jquery-1.9.1.min.js"></script>
 	<script src="./js/js.js"></script>
 	<style>
-		#alert{
-			background:rgba(51,51,51,0.8); 
-			color:#FFF; 
-			min-height:200px;
-			max-height:400px;
-			width:390px; 
-			position:fixed; 
-			display:none; 
-			z-index:9999; 
-			overflow:auto;
+		#alerr {
+			background: rgba(51, 51, 51, 0.8);
+			color: #FFF;
+			min-height: 200px;
+			max-height: 400px;
+			width: 390px;
+			position: fixed;
+			display: none;
+			z-index: 9999;
+			overflow: auto;
 			left: 530px;
 			top: 350px;
 			padding: 10px;
@@ -29,7 +29,7 @@
 </head>
 
 <body>
-	<div id="alert">
+	<div id="alerr">
 		<pre id="ssaa"></pre>
 	</div>
 	<iframe name="back" style="display:none;"></iframe>
@@ -55,9 +55,14 @@
 			</div>
 			<div class="hal" id="main">
 				<div>
-					<marquee style="width:80%; display:inline-block;">
+					<div class="marquee-box">
+						<div class="marquee-content">
+							請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地！詳見最新文章
+						</div>
+					</div>
+					<!-- <marquee style="width:80%;">
 						請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地！詳見最新文章
-					</marquee>
+					</marquee> -->
 					<span style="width:18%; display:inline-block;">
 						<?php if (isset($_SESSION['login'])): ?>
 							歡迎，<?= $_SESSION['login']; ?><br>
