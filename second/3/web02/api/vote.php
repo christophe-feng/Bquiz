@@ -17,4 +17,5 @@ foreach([$_POST['id'],$_POST['main_id']] as $id){
 }
 
 // 路徑要寫正確
-header("location: ../index.php?do=result&id=" . $_POST['main_id']);
+// header("location: ../index.php?do=result&id=" . $_POST['main_id']);
+to("../index.php?do=result&id=" . $_POST['main_id']);
