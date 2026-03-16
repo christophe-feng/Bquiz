@@ -55,14 +55,14 @@
 			</div>
 			<div class="hal" id="main">
 				<div>
-					<div class="marquee-box">
+					<!-- <div class="marquee-box">
 						<div class="marquee-content">
 							請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地！詳見最新文章
 						</div>
-					</div>
-					<!-- <marquee style="width:80%;">
+					</div> -->
+					<marquee style="width:80%;">
 						請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地！詳見最新文章
-					</marquee> -->
+					</marquee>
 					<span style="width:18%; display:inline-block;">
 						<?php if (isset($_SESSION['login'])): ?>
 							歡迎，<?= $_SESSION['login']; ?><br>
