@@ -1,6 +1,6 @@
 <fieldset>
     <legend>忘記密碼</legend>
-    <form action="./api/chk_email.php" method="post">
+    <!-- <form action="./api/chk_email.php" method="post"> -->
         <div>請輸入信箱以查詢密碼</div>
         <div>
             <input type="text" name="email" id="email" required>
@@ -15,7 +15,7 @@
             <input type="button" value="尋找" onclick="forgot()">
             <!-- <input type="submit" value="尋找"> -->
         </div>
-    </form>
+    <!-- </form> -->
 </fieldset>
 
 <script>
