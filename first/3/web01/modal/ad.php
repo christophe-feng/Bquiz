@@ -1,6 +1,6 @@
 <div class="cent">新增動態文字廣告</div>
 <hr>
-<form action="./api/insert.php?table=<?= $_GET['table']; ?>" method="post" enctype="multipart/form-data">
+<form action="./api/save.php?table=<?= $_GET['table']; ?>" method="post" enctype="multipart/form-data">
     <table>
         <tr>
             <td>標題區替代文字：</td>

@@ -1,7 +1,7 @@
 <!-- 可以從ad複製過來 -->
 <div class="cent">新增最新消息資料</div>
 <hr>
-<form action="./api/insert.php?table=<?= $_GET['table']; ?>" method="post" enctype="multipart/form-data">
+<form action="./api/save.php?table=<?= $_GET['table']; ?>" method="post" enctype="multipart/form-data">
     <table>
         <tr>
             <td>最新消息資料：</td>

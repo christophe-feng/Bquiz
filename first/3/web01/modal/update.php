@@ -17,7 +17,7 @@ switch($_GET['table']){
 <div class="cent">
     <?= $header ?>
 </div>
-<form action="./api/update.php?table=<?= $_GET['table'] ?>" method="post" enctype="multipart/form-data">
+<form action="./api/save.php?table=<?= $_GET['table'] ?>" method="post" enctype="multipart/form-data">
     <table style="width: 70%;margin:auto;">
         <tr>
             <td><?= $title ?></td>
