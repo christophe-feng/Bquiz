@@ -1,8 +1,6 @@
 <?php
 include_once "db.php";
 
-// 很不熟悉
-// 程式碼邏輯還需要理解
 // 1. 存入問卷題目
 if(!empty($_POST['subject'])){
     $Que->save(['text'=>$_POST['subject'],'main_id'=>0,'vote'=>0]);
