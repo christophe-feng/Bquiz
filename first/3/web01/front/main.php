@@ -1,24 +1,26 @@
 <div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
     <marquee scrolldelay="120" direction="left" style="position:absolute; width:100%; height:40px;">
-        <!-- 動態文字廣告 -->
+        <!-- 動態文字廣告 開始-->
         <?php
         $rows = $Ad->all(['sh' => 1]);
         foreach ($rows as $row) {
             echo $row['text'] . "&nbsp;&nbsp;&nbsp;&nbsp;";
         }
         ?>
+        <!-- 動態文字廣告 結束-->        
     </marquee>
     <div style="height:32px; display:block;"></div>
     <!--正中央-->
     <script>
         var lin = new Array();
-        // 動畫圖片輪播區
+        // 動畫圖片輪播區 要寫的地方 開始
         <?php
         $rows = $Mvim->all(['sh' => 1]);
         foreach ($rows as $row) {
             echo "lin.push('upload/{$row['img']}');\n";
         }
         ?>
+        // 動畫圖片輪播區 要寫的地方 結束
         var now = 0;
         if (lin.length > 1) {
             setInterval("ww()", 3000);

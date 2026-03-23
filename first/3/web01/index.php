@@ -102,6 +102,7 @@ include_once "./api/db.php";
 				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo('?do=login')">管理登入</button>
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
+					<!-- 要寫的地方 開始 -->
 					<div class="btn cent" onclick="pp(1)">
 						<img src="icon/up.jpg" alt="">
 					</div>
@@ -118,6 +119,7 @@ include_once "./api/db.php";
 					<div class="btn cent" onclick="pp(2)">
 						<img src="icon/dn.jpg" alt="">
 					</div>
+					<!-- 要寫的地方 結束 -->
 					<script>
 						var nowpage = 0,
 							num = 0;
