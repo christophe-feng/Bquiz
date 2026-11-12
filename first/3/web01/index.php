@@ -12,6 +12,12 @@ include_once "./api/db.php";
 	<link href="./css/css.css" rel="stylesheet" type="text/css">
 	<script src="./js/jquery-3.4.1.min.js"></script>
 	<script src="./js/js.js"></script>
+    <style>
+    .btn {
+        text-align: center;
+        margin: 5px auto;
+    }
+    </style>
 </head>
 
 <body>
@@ -43,11 +49,9 @@ include_once "./api/db.php";
 							<a href="<?= $main['href']; ?>">
 								<?= $main['text']; ?>
 								<?php if ($Menu->count(['main_id' => $main['id']]) > 0): ?>
+									<?php $subs = $Menu->all(['main_id' => $main['id']]); ?>
 									<div class="mw">
-										<?php
-										$subs = $Menu->all(['main_id' => $main['id']]);
-										foreach ($subs as $sub):
-										?>
+										<?php foreach ($subs as $sub): ?>
 											<div class="mainmu2">
 												<a href="<?= $sub['href']; ?>">
 													<?= $sub['text']; ?>
