@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>網頁設計乙級術科成果展示</title>
+    <!-- 引入 Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* 僅保留維持「樸素新手風格」視覺外觀所需的極少量微調樣式 */
+        body {
+            background-color: #f4f6f9;
+            font-family: "Microsoft JhengHei", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #333;
+        }
+        .header-bar {
+            background-color: #ffffff;
+            border-bottom: 2px solid #d0d7de;
+        }
+        .portfolio-container {
+            max-width: 900px;
+        }
+        .project-card {
+            border-color: #d8dee4;
+            border-radius: 8px;
+        }
+        .screenshot-box {
+            background-color: #f8f9fa;
+            border: 2px dashed #ced4da;
+            border-radius: 6px;
+            min-height: 180px;
+            color: #6c757d;
+        }
+        .tech-badge {
+            background-color: #eef2f7;
+            color: #3b5998;
+            border: 1px solid #d0d9e6;
+            font-weight: 500;
+        }
+        .toast-notice {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 1050;
+        }
+        .toast-notice.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 頁首區塊 -->
+    <header class="header-bar py-4 mb-4">
+        <div class="container portfolio-container text-center">
+            <h1 class="h3 fw-bold text-primary mb-2">網頁設計乙級術科成果展示</h1>
+            <p class="text-secondary mb-2">勞動部勞動力發展署 17300-102201 ~ 102204 四大題組實作練習紀錄</p>
+            <div class="small text-muted">
+                <span>開發環境：PHP 8 + MySQL (XAMPP) / HTML5 / CSS3 / Vanilla JS</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要內容區塊 -->
+    <main class="container portfolio-container pb-5">
+
+        <!-- 學習筆記與簡介 -->
+        <section class="card project-card shadow-sm mb-4">
+            <div class="card-body p-4">
+                <h2 class="h5 fw-bold border-bottom pb-2 mb-3">關於本作品集</h2>
+                <p class="mb-2 text-secondary" style="line-height: 1.7;">
+                    這是我準備「技術士技能檢定－網頁設計乙級」期間所完成的四個術科題組實作整理。
+                    每個題組都從零開始建置資料庫、撰寫後台管理系統（CRUD）以及前台互動功能，並針對資料安全與分頁查詢進行了基礎練習。
+                </p>
+                <div class="d-flex flex-wrap gap-2 mt-3">
+                    <span class="badge tech-badge px-2 py-1">HTML / CSS</span>
+                    <span class="badge tech-badge px-2 py-1">JavaScript / jQuery</span>
+                    <span class="badge tech-badge px-2 py-1">PHP</span>
+                    <span class="badge tech-badge px-2 py-1">MySQL</span>
+                    <span class="badge tech-badge px-2 py-1">Session 權限驗證</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 題組一 -->
+        <article class="card project-card shadow-sm mb-4">
+            <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <h3 class="h5 fw-bold mb-0 text-dark">題組一：卓越科技大學校園資訊系統</h3>
+                <span class="badge bg-secondary">試題編號：17300-102201</span>
+            </div>
+            <div class="card-body p-4">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-5">
+                        <div class="screenshot-box d-flex flex-column justify-content-center align-items-center p-3 text-center">
+                            <span class="fw-bold mb-1">[ 題組一畫面截圖預留區 ]</span>
+                            <small>可放置首頁輪播或後台管理截圖</small>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <p class="text-secondary small mb-2">
+                            完整的校園網站內容管理系統（CMS），包含前台多區塊動態呈現與後台 9 大模組維護功能。
+                        </p>
+                        <ul class="small text-dark ps-3 mb-3" style="line-height: 1.7;">
+                            <li><strong>前台互動：</strong>動態文字廣告輪播、GIF 動畫圖片切換、校園映像上下捲動控制。</li>
+                            <li><strong>資訊與分頁：</strong>最新消息前 5 筆展示、滑鼠移入彈出完整內容、More 更多消息分頁。</li>
+                            <li><strong>後台管理：</strong>網站標題單選切換、進站總人數統計（防重複刷新計算）、雙層主次選單動態管理。</li>
+                        </ul>
+                        <div class="d-flex flex-wrap gap-1 mb-3">
+                            <span class="badge tech-badge">PHP</span>
+                            <span class="badge tech-badge">MySQL</span>
+                            <span class="badge tech-badge">JavaScript 輪播</span>
+                            <span class="badge tech-badge">主次選單關聯</span>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button type="button" class="btn btn-primary btn-sm" onclick="showNotice('即將前往題組一：卓越科技大學校園資訊系統 Demo')">觀看成果畫面</button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="showNotice('開啟題組一 GitHub 原始碼倉庫')">GitHub 原始碼</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 題組二 -->
+        <article class="card project-card shadow-sm mb-4">
+            <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <h3 class="h5 fw-bold mb-0 text-dark">題組二：健康促進網社群平台</h3>
+                <span class="badge bg-secondary">試題編號：17300-102202</span>
+            </div>
+            <div class="card-body p-4">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-5">
+                        <div class="screenshot-box d-flex flex-column justify-content-center align-items-center p-3 text-center">
+                            <span class="fw-bold mb-1">[ 題組二畫面截圖預留區 ]</span>
+                            <small>可放置健康文章頁籤或問卷統計長條圖截圖</small>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <p class="text-secondary small mb-2">
+                            具備會員註冊驗證、文章按讚人氣統計與線上問卷投票系統的健康資訊社群平台。
+                        </p>
+                        <ul class="small text-dark ps-3 mb-3" style="line-height: 1.7;">
+                            <li><strong>會員系統：</strong>會員註冊防重複檢測、忘記密碼信箱查詢、今日與累計瀏覽人次統計。</li>
+                            <li><strong>文章與互動：</strong>首頁 4 大衛教主題頁籤切換、分類網誌導覽列、登入會員按讚/收回讚即時人氣排序。</li>
+                            <li><strong>問卷調查：</strong>登入會員可參與投票，動態計算各選項票數與百分比長條圖；後台支援動態新增選項。</li>
+                        </ul>
+                        <div class="d-flex flex-wrap gap-1 mb-3">
+                            <span class="badge tech-badge">PHP</span>
+                            <span class="badge tech-badge">MySQL</span>
+                            <span class="badge tech-badge">AJAX 按讚互動</span>
+                            <span class="badge tech-badge">動態問卷統計</span>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button type="button" class="btn btn-primary btn-sm" onclick="showNotice('即將前往題組二：健康促進網社群平台 Demo')">觀看成果畫面</button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="showNotice('開啟題組二 GitHub 原始碼倉庫')">GitHub 原始碼</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 題組三 -->
+        <article class="card project-card shadow-sm mb-4">
+            <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <h3 class="h5 fw-bold mb-0 text-dark">題組三：ABC影城線上訂票系統</h3>
+                <span class="badge bg-secondary">試題編號：17300-102203</span>
+            </div>
+            <div class="card-body p-4">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-5">
+                        <div class="screenshot-box d-flex flex-column justify-content-center align-items-center p-3 text-center">
+                            <span class="fw-bold mb-1">[ 題組三畫面截圖預留區 ]</span>
+                            <small>可放置預告片轉場或 4×5 影廳劃位畫面截圖</small>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <p class="text-secondary small mb-2">
+                            模擬影城院線片檔期管理與即時線上劃位購票系統，包含多層次條件篩選與訂單管理。
+                        </p>
+                        <ul class="small text-dark ps-3 mb-3" style="line-height: 1.7;">
+                            <li><strong>預告與院線：</strong>預告片海報淡入/縮放/滑出轉場動畫與按鈕列捲動；自動過濾上映 3 天內院線片。</li>
+                            <li><strong>三層聯動訂票：</strong>電影 → 有效日期 → 未開演場次與剩餘座位即時計算。</li>
+                            <li><strong>影廳劃位與訂單：</strong>4×5 共 20 席座位狀態渲染、單筆最多 4 張防呆、自動生成日期+流水號訂單編號。</li>
+                        </ul>
+                        <div class="d-flex flex-wrap gap-1 mb-3">
+                            <span class="badge tech-badge">PHP</span>
+                            <span class="badge tech-badge">MySQL</span>
+                            <span class="badge tech-badge">三層聯動查詢</span>
+                            <span class="badge tech-badge">座位矩陣防呆</span>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button type="button" class="btn btn-primary btn-sm" onclick="showNotice('即將前往題組三：ABC影城網站 Demo')">觀看成果畫面</button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="showNotice('開啟題組三 GitHub 原始碼倉庫')">GitHub 原始碼</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 題組四 -->
+        <article class="card project-card shadow-sm mb-4">
+            <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <h3 class="h5 fw-bold mb-0 text-dark">題組四：精品電子商務網站</h3>
+                <span class="badge bg-secondary">試題編號：17300-102204</span>
+            </div>
+            <div class="card-body p-4">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-5">
+                        <div class="screenshot-box d-flex flex-column justify-content-center align-items-center p-3 text-center">
+                            <span class="fw-bold mb-1">[ 題組四畫面截圖預留區 ]</span>
+                            <small>可放置商品分類選單或購物車結帳頁面截圖</small>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <p class="text-secondary small mb-2">
+                            具備大中雙層商品分類、數學算式驗證碼、Session 購物車及後台權限分級的電商網站。
+                        </p>
+                        <ul class="small text-dark ps-3 mb-3" style="line-height: 1.7;">
+                            <li><strong>商品分類與瀏覽：</strong>左側大分類滑鼠展開中分類選單、即時統計各分類上架商品數量與詳細規格頁。</li>
+                            <li><strong>購物車與結帳：</strong>兩位數加法驗證碼登入、Session 多商品購物車小計/總價運算與 14 碼訂單生成。</li>
+                            <li><strong>後台權限分級：</strong>支援新增管理員並勾選指定後台管理模組權限（分類、訂單、會員、最新消息）。</li>
+                        </ul>
+                        <div class="d-flex flex-wrap gap-1 mb-3">
+                            <span class="badge tech-badge">PHP</span>
+                            <span class="badge tech-badge">MySQL</span>
+                            <span class="badge tech-badge">Session 購物車</span>
+                            <span class="badge tech-badge">RBAC 權限管理</span>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button type="button" class="btn btn-primary btn-sm" onclick="showNotice('即將前往題組四：精品電子商務網站 Demo')">觀看成果畫面</button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="showNotice('開啟題組四 GitHub 原始碼倉庫')">GitHub 原始碼</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- 頁尾區塊 -->
+    <footer class="bg-white border-top py-4 text-center text-muted small">
+        <div class="container portfolio-container">
+            <p class="mb-1">網頁設計乙級術科練習作品集 (Web Design Level B Portfolio)</p>
+            <p class="mb-0">Built with HTML5 &amp; Bootstrap 5</p>
+        </div>
+    </footer>
+
+    <!-- 輕量提示框 -->
+    <div id="toastNotice" class="toast-notice"></div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let toastTimer;
+        function showNotice(message) {
+            const toast = document.getElementById('toastNotice');
+            toast.textContent = message;
+            toast.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
