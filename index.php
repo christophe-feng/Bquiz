@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,17 +14,21 @@
             font-family: "Microsoft JhengHei", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             color: #333;
         }
+
         .header-bar {
             background-color: #ffffff;
             border-bottom: 2px solid #d0d7de;
         }
+
         .portfolio-container {
             max-width: 900px;
         }
+
         .project-card {
             border-color: #d8dee4;
             border-radius: 8px;
         }
+
         .screenshot-box {
             background-color: #f8f9fa;
             border: 2px dashed #ced4da;
@@ -31,21 +36,23 @@
             min-height: 180px;
             color: #6c757d;
         }
+
         .tech-badge {
             background-color: #eef2f7;
             color: #3b5998;
             border: 1px solid #d0d9e6;
             font-weight: 500;
-        }        
+        }
     </style>
 </head>
+
 <body>
 
     <!-- 頁首區塊 -->
     <header class="header-bar py-4 mb-4">
         <div class="container portfolio-container text-center">
             <h1 class="h3 fw-bold text-primary mb-2">網頁設計乙級術科成果展示</h1>
-            <p class="text-secondary mb-2">開發環境：PHP 8 + MySQL (XAMPP) / HTML5 / CSS3 / Vanilla JS</p>            
+            <p class="text-secondary mb-2">開發環境：PHP 8 + MySQL (XAMPP) / HTML5 / CSS3 / Vanilla JS</p>
         </div>
     </header>
 
@@ -78,7 +85,8 @@
             <div class="card-body p-4">
                 <div class="row g-4 align-items-center">
                     <div class="col-md-5">
-                        <div class="screenshot-box d-flex flex-column justify-content-center align-items-center p-3 text-center">
+                        <div
+                            class="screenshot-box d-flex flex-column justify-content-center align-items-center p-3 text-center">
                             <span class="fw-bold mb-1">[ 題組一畫面截圖預留區 ]</span>
                             <small>可放置首頁輪播或後台管理截圖</small>
                         </div>
@@ -99,8 +107,8 @@
                             <span class="badge tech-badge">主次選單關聯</span>
                         </div>
                         <div class="d-flex gap-2">
-                            <button type="button" class="btn btn-primary btn-sm" onclick="showNotice('即將前往題組一：卓越科技大學校園資訊系統 Demo')">觀看成果畫面</button>
-                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="showNotice('開啟題組一 GitHub 原始碼倉庫')">GitHub 原始碼</button>
+                            <a href="./first/3/web01/index.php" class="btn btn-primary btn-sm">觀看成果畫面</a>
+                            <a href="https://github.com/christophe-feng/Bquiz/tree/main/first/3/web01" class="btn btn-outline-secondary btn-sm">GitHub 原始碼</a>
                         </div>
                     </div>
                 </div>
@@ -115,7 +123,8 @@
             <div class="card-body p-4">
                 <div class="row g-4 align-items-center">
                     <div class="col-md-5">
-                        <div class="screenshot-box d-flex flex-column justify-content-center align-items-center p-3 text-center">
+                        <div
+                            class="screenshot-box d-flex flex-column justify-content-center align-items-center p-3 text-center">
                             <span class="fw-bold mb-1">[ 題組二畫面截圖預留區 ]</span>
                             <small>可放置健康文章頁籤或問卷統計長條圖截圖</small>
                         </div>
@@ -136,8 +145,8 @@
                             <span class="badge tech-badge">動態問卷統計</span>
                         </div>
                         <div class="d-flex gap-2">
-                            <button type="button" class="btn btn-primary btn-sm" onclick="showNotice('即將前往題組二：健康促進網社群平台 Demo')">觀看成果畫面</button>
-                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="showNotice('開啟題組二 GitHub 原始碼倉庫')">GitHub 原始碼</button>
+                            <a href="./second/3/web02/index.php" class="btn btn-primary btn-sm">觀看成果畫面</a>
+                            <a href="https://github.com/christophe-feng/Bquiz/tree/main/second/3/web02" class="btn btn-outline-secondary btn-sm">GitHub 原始碼</a>
                         </div>
                     </div>
                 </div>
@@ -152,7 +161,8 @@
             <div class="card-body p-4">
                 <div class="row g-4 align-items-center">
                     <div class="col-md-5">
-                        <div class="screenshot-box d-flex flex-column justify-content-center align-items-center p-3 text-center">
+                        <div
+                            class="screenshot-box d-flex flex-column justify-content-center align-items-center p-3 text-center">
                             <span class="fw-bold mb-1">[ 題組三畫面截圖預留區 ]</span>
                             <small>可放置預告片轉場或 4×5 影廳劃位畫面截圖</small>
                         </div>
@@ -173,8 +183,8 @@
                             <span class="badge tech-badge">座位矩陣防呆</span>
                         </div>
                         <div class="d-flex gap-2">
-                            <button type="button" class="btn btn-primary btn-sm" onclick="showNotice('即將前往題組三：ABC影城網站 Demo')">觀看成果畫面</button>
-                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="showNotice('開啟題組三 GitHub 原始碼倉庫')">GitHub 原始碼</button>
+                            <a href="./third/2/web07/index.php" class="btn btn-primary btn-sm">觀看成果畫面</a>
+                            <a href="https://github.com/christophe-feng/Bquiz/tree/main/third/2/web07" class="btn btn-outline-secondary btn-sm">GitHub 原始碼</a>
                         </div>
                     </div>
                 </div>
@@ -189,7 +199,8 @@
             <div class="card-body p-4">
                 <div class="row g-4 align-items-center">
                     <div class="col-md-5">
-                        <div class="screenshot-box d-flex flex-column justify-content-center align-items-center p-3 text-center">
+                        <div
+                            class="screenshot-box d-flex flex-column justify-content-center align-items-center p-3 text-center">
                             <span class="fw-bold mb-1">[ 題組四畫面截圖預留區 ]</span>
                             <small>可放置商品分類選單或購物車結帳頁面截圖</small>
                         </div>
@@ -210,8 +221,8 @@
                             <span class="badge tech-badge">RBAC 權限管理</span>
                         </div>
                         <div class="d-flex gap-2">
-                            <button type="button" class="btn btn-primary btn-sm" onclick="showNotice('即將前往題組四：精品電子商務網站 Demo')">觀看成果畫面</button>
-                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="showNotice('開啟題組四 GitHub 原始碼倉庫')">GitHub 原始碼</button>
+                            <a href="./fourth/2/web04/index.php" class="btn btn-primary btn-sm">觀看成果畫面</a>
+                            <a href="https://github.com/christophe-feng/Bquiz/tree/main/fourth/2/web04" class="btn btn-outline-secondary btn-sm">GitHub 原始碼</a>
                         </div>
                     </div>
                 </div>
@@ -231,4 +242,5 @@
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
