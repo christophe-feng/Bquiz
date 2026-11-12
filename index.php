@@ -74,7 +74,6 @@
         <article class="card project-card shadow-sm mb-4">
             <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
                 <h3 class="h5 fw-bold mb-0 text-dark">題組一：卓越科技大學校園資訊系統</h3>
-                <span class="badge bg-secondary">試題編號：17300-102201</span>
             </div>
             <div class="card-body p-4">
                 <div class="row g-4 align-items-center">
@@ -112,7 +111,6 @@
         <article class="card project-card shadow-sm mb-4">
             <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
                 <h3 class="h5 fw-bold mb-0 text-dark">題組二：健康促進網社群平台</h3>
-                <span class="badge bg-secondary">試題編號：17300-102202</span>
             </div>
             <div class="card-body p-4">
                 <div class="row g-4 align-items-center">
@@ -150,7 +148,6 @@
         <article class="card project-card shadow-sm mb-4">
             <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
                 <h3 class="h5 fw-bold mb-0 text-dark">題組三：ABC影城線上訂票系統</h3>
-                <span class="badge bg-secondary">試題編號：17300-102203</span>
             </div>
             <div class="card-body p-4">
                 <div class="row g-4 align-items-center">
@@ -188,7 +185,6 @@
         <article class="card project-card shadow-sm mb-4">
             <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
                 <h3 class="h5 fw-bold mb-0 text-dark">題組四：精品電子商務網站</h3>
-                <span class="badge bg-secondary">試題編號：17300-102204</span>
             </div>
             <div class="card-body p-4">
                 <div class="row g-4 align-items-center">
