@@ -45,10 +45,7 @@
     <header class="header-bar py-4 mb-4">
         <div class="container portfolio-container text-center">
             <h1 class="h3 fw-bold text-primary mb-2">網頁設計乙級術科成果展示</h1>
-            <p class="text-secondary mb-2">勞動部勞動力發展署 17300-102201 ~ 102204 四大題組實作練習紀錄</p>
-            <div class="small text-muted">
-                <span>開發環境：PHP 8 + MySQL (XAMPP) / HTML5 / CSS3 / Vanilla JS</span>
-            </div>
+            <p class="text-secondary mb-2">開發環境：PHP 8 + MySQL (XAMPP) / HTML5 / CSS3 / Vanilla JS</p>            
         </div>
     </header>
 
