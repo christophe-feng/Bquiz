@@ -36,24 +36,7 @@
             color: #3b5998;
             border: 1px solid #d0d9e6;
             font-weight: 500;
-        }
-        .toast-notice {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 10px 18px;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            z-index: 1050;
-        }
-        .toast-notice.show {
-            opacity: 1;
-        }
+        }        
     </style>
 </head>
 <body>
@@ -252,22 +235,7 @@
         </div>
     </footer>
 
-    <!-- 輕量提示框 -->
-    <div id="toastNotice" class="toast-notice"></div>
-
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        let toastTimer;
-        function showNotice(message) {
-            const toast = document.getElementById('toastNotice');
-            toast.textContent = message;
-            toast.classList.add('show');
-            clearTimeout(toastTimer);
-            toastTimer = setTimeout(() => {
-                toast.classList.remove('show');
-            }, 2500);
-        }
-    </script>
 </body>
 </html>
