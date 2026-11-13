@@ -158,7 +158,7 @@ $Que = new DB('que');
 $Log = new DB('log');
 
 //很不熟，需要搞清楚邏輯
-if (!isset($_SESSION['total'])) {
+if (!isset($_SESSION['total']) || $_SESSION['total'] != date("Y-m-d")) {
     $today = $Total->find(['date' => date("Y-m-d")]);
     if (empty($today)) {
         $Total->save(['date' => date("Y-m-d"), 'total' => 1]);
@@ -166,5 +166,5 @@ if (!isset($_SESSION['total'])) {
         $today['total'] = $today['total'] + 1;
         $Total->save($today);
     }
-    $_SESSION['total'] = 1;
+    $_SESSION['total'] = date("Y-m-d");
 }
