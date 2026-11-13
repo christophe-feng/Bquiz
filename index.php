@@ -35,6 +35,26 @@
             border-radius: 6px;
             min-height: 180px;
             color: #6c757d;
+            overflow: hidden; /* 確保圖片放大時不會超出外框 */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* 滑鼠移入截圖外框時的效果 */
+        .screenshot-box:hover {
+            border-color: #0d6efd;
+            box-shadow: 0 4px 12px rgba(13, 110, 253, 0.12);
+        }
+
+        .screenshot-box img {
+            width: 100%;
+            border-radius: 4px;
+            transition: transform 0.35s ease, filter 0.35s ease;
+        }
+
+        /* 滑鼠移入圖片時的微幅放大與提亮效果 */
+        .screenshot-box:hover img {
+            transform: scale(1.04);
+            filter: brightness(1.03);
         }
 
         .tech-badge {
@@ -42,10 +62,6 @@
             color: #3b5998;
             border: 1px solid #d0d9e6;
             font-weight: 500;
-        }
-
-        img{
-            width: 100%;
         }
     </style>
 </head>
@@ -89,12 +105,9 @@
             <div class="card-body p-4">
                 <div class="row g-4 align-items-center">
                     <div class="col-md-5">
-                        <div
-                            class="screenshot-box d-flex flex-column justify-content-center align-items-center p-3 text-center">
-                            <span class="fw-bold mb-1">
-                                <img src="./first/Bquiz-1.png" alt="題組一畫面截圖">
-                            </span>
-                        </div>
+                        <a href="./first/3/web01/index.php" class="screenshot-box d-flex flex-column justify-content-center align-items-center p-2 text-center text-decoration-none">
+                            <img src="./first/Bquiz-1.png" alt="題組一畫面截圖">
+                        </a>
                     </div>
                     <div class="col-md-7">
                         <p class="text-secondary small mb-2">
@@ -128,10 +141,9 @@
             <div class="card-body p-4">
                 <div class="row g-4 align-items-center">
                     <div class="col-md-5">
-                        <div
-                            class="screenshot-box d-flex flex-column justify-content-center align-items-center p-3 text-center">
-                            <img src="./second/Bquiz-2.png" alt="題組一畫面截圖">
-                        </div>
+                        <a href="./second/3/web02/index.php" class="screenshot-box d-flex flex-column justify-content-center align-items-center p-2 text-center text-decoration-none">
+                            <img src="./second/Bquiz-2.png" alt="題組二畫面截圖">
+                        </a>
                     </div>
                     <div class="col-md-7">
                         <p class="text-secondary small mb-2">
@@ -165,10 +177,9 @@
             <div class="card-body p-4">
                 <div class="row g-4 align-items-center">
                     <div class="col-md-5">
-                        <div
-                            class="screenshot-box d-flex flex-column justify-content-center align-items-center p-3 text-center">
+                        <a href="./third/2/web07/index.php" class="screenshot-box d-flex flex-column justify-content-center align-items-center p-2 text-center text-decoration-none">
                             <img src="./third/Bquiz-3.png" alt="題組三畫面截圖">
-                        </div>
+                        </a>
                     </div>
                     <div class="col-md-7">
                         <p class="text-secondary small mb-2">
@@ -202,10 +213,9 @@
             <div class="card-body p-4">
                 <div class="row g-4 align-items-center">
                     <div class="col-md-5">
-                        <div
-                            class="screenshot-box d-flex flex-column justify-content-center align-items-center p-3 text-center">
+                        <a href="./fourth/2/web04/index.php" class="screenshot-box d-flex flex-column justify-content-center align-items-center p-2 text-center text-decoration-none">
                             <img src="./fourth/Bquiz-4.png" alt="題組四畫面截圖">
-                        </div>
+                        </a>
                     </div>
                     <div class="col-md-7">
                         <p class="text-secondary small mb-2">
