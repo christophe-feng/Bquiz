@@ -3,14 +3,29 @@ session_start();
 
 class DB
 {
-    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db11";
     protected $pdo;
     protected $table;
 
     function __construct($table)
     {
         $this->table = $table;
-        $this->pdo = new PDO($this->dsn, 'root', '');
+
+        // 動態讀取 Railway 環境變數
+        $host     = getenv('DB_HOST') ?: '127.0.0.1';
+        $port     = getenv('DB_PORT') ?: '3306';
+        $user     = getenv('DB_USERNAME') ?: 'root';
+        $password = getenv('DB_PASSWORD') !== false ? getenv('DB_PASSWORD') : '';
+
+        // 指定該專案要使用的資料庫名稱
+        $dbname   = 'db11';
+
+        $dsn = "mysql:host={$host};port={$port};dbname={$dbname};charset=utf8mb4";
+
+        $this->pdo = new PDO($dsn, $user, $password, [
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES   => false,
+        ]);
     }
 
     function all(...$arg)
@@ -59,13 +74,14 @@ class DB
         return $this->pdo->query($sql)->fetchColumn();
     }
 
-    function del($id){
-        $sql=" DELETE FROM `$this->table` ";
-        if(is_array($id)){
-            $where=$this->array2sql($id);
-            $sql .=" WHERE " . join(" AND ",$where);
-        }else{
-            $sql .=" WHERE `id`='$id' ";
+    function del($id)
+    {
+        $sql = " DELETE FROM `$this->table` ";
+        if (is_array($id)) {
+            $where = $this->array2sql($id);
+            $sql .= " WHERE " . join(" AND ", $where);
+        } else {
+            $sql .= " WHERE `id`='$id' ";
         }
         return $this->pdo->exec($sql);
     }
@@ -78,54 +94,58 @@ class DB
     //     }
     // }
 
-    function save($array){
-        if(isset($array['id'])){
-            $sql=" UPDATE $this->table";
-            $set= $this->array2sql($array);
-            $sql .=" SET " . join(", ",$set);
-            $sql .=" WHERE id='{$array['id']}'";
-            }else{
-            $sql=" INSERT INTO `{$this->table}` ";
-            $keys=array_keys($array);
-            $sql .="(`" . join("`,`", $keys) . "`)";
-            $sql .=" VALUES ('" . join("','", $array) . "')";
+    function save($array)
+    {
+        if (isset($array['id'])) {
+            $sql = " UPDATE $this->table";
+            $set = $this->array2sql($array);
+            $sql .= " SET " . join(", ", $set);
+            $sql .= " WHERE id='{$array['id']}'";
+        } else {
+            $sql = " INSERT INTO `{$this->table}` ";
+            $keys = array_keys($array);
+            $sql .= "(`" . join("`,`", $keys) . "`)";
+            $sql .= " VALUES ('" . join("','", $array) . "')";
         }
         return $this->pdo->exec($sql);
     }
 
-    private function array2sql($array){
-        $tmp=[];
-        foreach($array as $key => $value){
-            $tmp[]="`$key`='$value'";
+    private function array2sql($array)
+    {
+        $tmp = [];
+        foreach ($array as $key => $value) {
+            $tmp[] = "`$key`='$value'";
         }
         return $tmp;
     }
 }
 
-function q($sql){
-    $dsn="mysql:host=localhost;charset=utf8;dbname=db11";
-    $pdo=New PDO($dsn,'root','');
+function q($sql)
+{
+    $dsn = "mysql:host=localhost;charset=utf8;dbname=db11";
+    $pdo = new PDO($dsn, 'root', '');
     return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function to($url){
-    header("location:".$url);
+function to($url)
+{
+    header("location:" . $url);
 }
 
 
-$Title=new DB('title');
-$Ad=new DB('ad');
-$Mvim=new DB('mvim');
-$Image=new DB('image');
-$Total=new DB('total');
-$Bottom=new DB('bottom');
-$News=new DB('news');
-$Admin=new DB('admin');
-$Menu=new DB('menu');
+$Title = new DB('title');
+$Ad = new DB('ad');
+$Mvim = new DB('mvim');
+$Image = new DB('image');
+$Total = new DB('total');
+$Bottom = new DB('bottom');
+$News = new DB('news');
+$Admin = new DB('admin');
+$Menu = new DB('menu');
 
-if(!isset($_SESSION['view'])){
-    $_SESSION['view']=1;
-    $total=$Total->find(1);
+if (!isset($_SESSION['view'])) {
+    $_SESSION['view'] = 1;
+    $total = $Total->find(1);
     $total['total']++;
     $Total->save($total);
 }

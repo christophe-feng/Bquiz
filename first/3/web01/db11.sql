@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2026-03-10 09:15:14
+-- 產生時間： 2026-11-16 03:29:25
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -128,7 +128,9 @@ CREATE TABLE `menu` (
 INSERT INTO `menu` (`id`, `text`, `href`, `main_id`, `sh`) VALUES
 (1, '管理登入', '?do=login', 0, 1),
 (2, '網站首頁', 'index.php', 0, 1),
-(5, '更多內容', 'index.php', 2, 0);
+(3, '測試1', 'fsejfisljsilejf', 0, 1),
+(4, '下拉測試1', 'dfsjilehflisjf', 3, 1),
+(5, '下拉測試2', 'fsjlidfjlseifh', 3, 0);
 
 -- --------------------------------------------------------
 
@@ -217,7 +219,7 @@ CREATE TABLE `total` (
 --
 
 INSERT INTO `total` (`id`, `total`) VALUES
-(1, 222);
+(1, 226);
 
 --
 -- 已傾印資料表的索引
