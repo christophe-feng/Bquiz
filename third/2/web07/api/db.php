@@ -159,8 +159,14 @@ function to($url){
 }
 
 function q($sql){
-    $dsn="mysql:host=localhost;charset=utf8;dbname=db03";
-    $pdo=new PDO($dsn,'root','');
+    $host   = getenv('DB_HOST') ?: '127.0.0.1';
+    $port   = getenv('DB_PORT') ?: '3306';
+    $user   = getenv('DB_USERNAME') ?: 'root';
+    $pass   = getenv('DB_PASSWORD') !== false ? getenv('DB_PASSWORD') : '';
+    $dbname = 'db03';
+
+    $dsn = "mysql:host={$host};port={$port};dbname={$dbname};charset=utf8mb4";
+    $pdo = new PDO($dsn, $user, $pass);
     return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
 
